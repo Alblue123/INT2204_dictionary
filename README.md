@@ -21,4 +21,3 @@ In order to run this application, you should follow these steps:
 ## Acknowledgements
 
 ## Contact Information
-
