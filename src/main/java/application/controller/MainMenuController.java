@@ -12,12 +12,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
-    @FXML private Button btn_search;
+    @FXML private Button btn_search, btn_add;
 
     @FXML private AnchorPane todo_pane;
 
     private AnchorPane current_pane;
     private AnchorPane search_pane;
+    private AnchorPane add_word_pane;
     private SearchController searchController;
 
     /**
@@ -35,6 +36,11 @@ public class MainMenuController implements Initializable {
         this.setToDo(search_pane);
     }
 
+    /** show the add view. */
+    public void addWordView() {
+        this.setToDo(add_word_pane);
+    }
+
     /**
      * On clicking switch scene
      *
@@ -43,6 +49,8 @@ public class MainMenuController implements Initializable {
     public void onClick(ActionEvent ev) {
         if (ev.getSource() == btn_search) {
             this.searchView();
+        } else if (ev.getSource() == btn_add) {
+            this.addWordView();
         }
     }
 
@@ -54,6 +62,14 @@ public class MainMenuController implements Initializable {
             search_pane = fxmlLoader.load();
             searchController = fxmlLoader.getController();
             searchController.loadWordView();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/add_word_view.fxml"));
+            add_word_pane = fxmlLoader.load();
         } catch (Exception e) {
             e.printStackTrace();
         }
