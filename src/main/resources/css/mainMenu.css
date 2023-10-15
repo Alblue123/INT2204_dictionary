@@ -1,0 +1,25 @@
+.btn {
+    -fx-background-color: none;
+    -fx-background-radius: 0;
+}
+
+.btn:hover {
+    -fx-background-color: rgba(0, 0, 0, .20);
+}
+
+.search_view {
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0, 0, 0);
+}
+
+.search_bar {
+    -fx-border-color: #e5e9ec;
+    -fx-background-color: none;
+    -fx-border-radius: 10px;
+}
+
+.search_list {
+    -fx-border-color: #e5e9ec;
+    -fx-background-color: none;
+    -fx-border-radius: 10px;
+}
