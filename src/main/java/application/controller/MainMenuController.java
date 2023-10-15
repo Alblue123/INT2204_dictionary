@@ -12,13 +12,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
-    @FXML private Button btn_search, btn_add;
+    @FXML private Button btn_search, btn_add, btn_edit;
 
     @FXML private AnchorPane todo_pane;
 
     private AnchorPane current_pane;
     private AnchorPane search_pane;
     private AnchorPane add_word_pane;
+    private AnchorPane edit_word_pane;
     private SearchController searchController;
 
     /**
@@ -41,6 +42,10 @@ public class MainMenuController implements Initializable {
         this.setToDo(add_word_pane);
     }
 
+    public void editWordView() {
+        this.setToDo(edit_word_pane);
+    }
+
     /**
      * On clicking switch scene
      *
@@ -51,6 +56,8 @@ public class MainMenuController implements Initializable {
             this.searchView();
         } else if (ev.getSource() == btn_add) {
             this.addWordView();
+        } else if (ev.getSource() == btn_edit) {
+            this.editWordView();
         }
     }
 
@@ -70,6 +77,14 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/add_word_view.fxml"));
             add_word_pane = fxmlLoader.load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/edit_word_view.fxml"));
+            edit_word_pane = fxmlLoader.load();
         } catch (Exception e) {
             e.printStackTrace();
         }
