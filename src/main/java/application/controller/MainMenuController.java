@@ -18,6 +18,7 @@ public class MainMenuController implements Initializable {
 
     private AnchorPane current_pane;
     private AnchorPane search_pane;
+    private SearchController searchController;
 
     /**
      * switch the pane and track the current pane
@@ -51,6 +52,8 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/search_view.fxml"));
             search_pane = fxmlLoader.load();
+            searchController = fxmlLoader.getController();
+            searchController.loadWordView();
         } catch (Exception e) {
             e.printStackTrace();
         }
