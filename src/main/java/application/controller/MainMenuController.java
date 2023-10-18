@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
-    @FXML private Button btn_search, btn_add, btn_edit;
+    @FXML private Button btn_search, btn_add, btn_edit, btn_gg, btn_game;
 
     @FXML private AnchorPane todo_pane;
 
@@ -21,6 +21,8 @@ public class MainMenuController implements Initializable {
     private AnchorPane add_word_pane;
     private AnchorPane edit_word_pane;
     private SearchController searchController;
+    private AnchorPane gg_translate_pane;
+    private AnchorPane game_pane;
 
     /**
      * switch the pane and track the current pane
@@ -42,8 +44,19 @@ public class MainMenuController implements Initializable {
         this.setToDo(add_word_pane);
     }
 
+    /** show edit wordView. */
     public void editWordView() {
         this.setToDo(edit_word_pane);
+    }
+
+    /** show gg translate view. */
+    public void ggTranslateView() {
+        this.setToDo(gg_translate_pane);
+    }
+
+    /** show game view. */
+    public void gameView() {
+        this.setToDo(game_pane);
     }
 
     /**
@@ -58,6 +71,10 @@ public class MainMenuController implements Initializable {
             this.addWordView();
         } else if (ev.getSource() == btn_edit) {
             this.editWordView();
+        } else if (ev.getSource() == btn_gg) {
+            this.ggTranslateView();
+        } else if (ev.getSource() == btn_game) {
+            this.gameView();
         }
     }
 
@@ -85,6 +102,22 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/edit_word_view.fxml"));
             edit_word_pane = fxmlLoader.load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/googletranslate_view.fxml"));
+            gg_translate_pane = fxmlLoader.load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/game_view.fxml"));
+            game_pane = fxmlLoader.load();
         } catch (Exception e) {
             e.printStackTrace();
         }
