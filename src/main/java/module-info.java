@@ -5,4 +5,5 @@ module application {
 
     opens application.controller to javafx.fxml;
     exports application;
+    opens application.backCode to javafx.fxml;
 }

@@ -5,24 +5,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
+import javafx.util.Callback;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.backCode.InnerList;
+
 public class MainMenuController implements Initializable {
-    @FXML private Button btn_search, btn_add, btn_edit, btn_gg, btn_game;
+    @FXML private Button btn_search, btn_add, btn_edit, btn_gg, btn_game, btn_wl;
 
     @FXML private AnchorPane todo_pane;
 
-    private AnchorPane current_pane;
-    private AnchorPane search_pane;
-    private AnchorPane add_word_pane;
-    private AnchorPane edit_word_pane;
-    private SearchController searchController;
-    private AnchorPane gg_translate_pane;
-    private AnchorPane game_pane;
+    @FXML private AnchorPane current_pane;
+    @FXML private AnchorPane search_pane;
+    @FXML private AnchorPane add_word_pane;
+    @FXML private AnchorPane edit_word_pane;
+    @FXML private SearchController searchController;
+    @FXML private WordListController wordListController;
+    @FXML private AnchorPane gg_translate_pane;
+    @FXML private AnchorPane game_pane;
+    @FXML private AnchorPane wordlist_pane;
 
     /**
      * switch the pane and track the current pane
@@ -47,6 +52,11 @@ public class MainMenuController implements Initializable {
     /** show edit wordView. */
     public void editWordView() {
         this.setToDo(edit_word_pane);
+    }
+
+    /** show wordlist view. */
+    public void wordlistView() {
+        this.setToDo(wordlist_pane);
     }
 
     /** show gg translate view. */
@@ -75,6 +85,8 @@ public class MainMenuController implements Initializable {
             this.ggTranslateView();
         } else if (ev.getSource() == btn_game) {
             this.gameView();
+        } else if (ev.getSource() == btn_wl) {
+            this.wordlistView();
         }
     }
 
@@ -118,6 +130,16 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/game_view.fxml"));
             game_pane = fxmlLoader.load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/word_list_view.fxml"));
+            wordlist_pane = fxmlLoader.load();
+            wordListController= fxmlLoader.getController();
+            wordListController.loadWordView();
         } catch (Exception e) {
             e.printStackTrace();
         }

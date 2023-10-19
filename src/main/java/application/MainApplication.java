@@ -38,7 +38,7 @@ public class MainApplication extends Application {
     @FXML
     public void exit(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
+        alert.setTitle("Exit");
         alert.setHeaderText("You're about to exit!");
         alert.setContentText("Please come back soon");
 

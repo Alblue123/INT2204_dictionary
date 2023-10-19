@@ -7,16 +7,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.SearchController">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="375.0" prefWidth="275.0" styleClass="search_view" stylesheets="@../css/mainMenu.css">
+      <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="375.0" prefWidth="275.0" styleClass="view" stylesheets="@../css/mainMenu.css">
          <children>
             <TextField fx:id="start_search" layoutX="17.0" layoutY="14.0" prefHeight="25.0" prefWidth="242.0" promptText="Enter your word" styleClass="search_bar" stylesheets="@../css/mainMenu.css">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </TextField>
-            <ListView layoutX="17.0" layoutY="66.0" prefHeight="289.0" prefWidth="242.0" styleClass="search_list" stylesheets="@../css/mainMenu.css" />
+            <ListView layoutX="17.0" layoutY="66.0" prefHeight="289.0" prefWidth="242.0" styleClass="list" stylesheets="@../css/mainMenu.css" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="search_view" layoutX="311.0" layoutY="21.0" prefHeight="375.0" prefWidth="275.0" styleClass="search_view" stylesheets="@../css/mainMenu.css" />
+      <AnchorPane fx:id="search_view" layoutX="311.0" layoutY="21.0" prefHeight="375.0" prefWidth="275.0" styleClass="view" stylesheets="@../css/mainMenu.css" />
    </children>
 </AnchorPane>
