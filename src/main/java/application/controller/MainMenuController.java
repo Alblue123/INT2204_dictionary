@@ -5,14 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Callback;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import application.backCode.InnerList;
 
 public class MainMenuController implements Initializable {
     @FXML private Button btn_search, btn_add, btn_edit, btn_gg, btn_game, btn_wl;

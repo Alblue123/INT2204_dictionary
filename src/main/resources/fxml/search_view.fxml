@@ -14,7 +14,7 @@
                   <Font name="Arial" size="13.0" />
                </font>
             </TextField>
-            <ListView layoutX="17.0" layoutY="66.0" prefHeight="289.0" prefWidth="242.0" styleClass="list" stylesheets="@../css/mainMenu.css" />
+            <ListView fx:id="search_list" layoutX="17.0" layoutY="66.0" prefHeight="289.0" prefWidth="242.0" styleClass="list" stylesheets="@../css/mainMenu.css" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="search_view" layoutX="311.0" layoutY="21.0" prefHeight="375.0" prefWidth="275.0" styleClass="view" stylesheets="@../css/mainMenu.css" />
