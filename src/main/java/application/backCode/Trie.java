@@ -11,11 +11,11 @@ public class Trie {
      * insert new word in to the structure.
      * @param word the target
      */
-    public static void add(Word word) {
+    public static void add(String word) {
         TrieNode cur = root;
 
-        for (int i = 0; i < word.getWordTarget().length(); ++i) {
-            char x = word.getWordTarget().charAt(i);
+        for (int i = 0; i < word.length(); ++i) {
+            char x = word.charAt(i);
 
             if (cur.getChildren().get(x) == null) {
                 cur.getChildren().put(x, new TrieNode());
@@ -25,7 +25,6 @@ public class Trie {
         }
 
         cur.setCheckEndOfWord(true);
-        cur.setContent(word.getWordExplain());
     }
 
     /**

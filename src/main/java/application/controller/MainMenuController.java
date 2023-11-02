@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.Dictionary.OfflineDictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +26,12 @@ public class MainMenuController implements Initializable {
     @FXML private AnchorPane gg_translate_pane;
     @FXML private AnchorPane game_pane;
     @FXML private AnchorPane wordlist_pane;
+
+    private OfflineDictionary offlineDictionary = new OfflineDictionary();
+
+    public OfflineDictionary getOfflineDictionary() {
+        return offlineDictionary;
+    }
 
     /**
      * switch the pane and track the current pane
@@ -95,6 +102,7 @@ public class MainMenuController implements Initializable {
             search_pane = fxmlLoader.load();
             searchController = fxmlLoader.getController();
             searchController.loadWordView();
+            searchController.searchList();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -140,7 +148,6 @@ public class MainMenuController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         this.searchView();
     }
 }

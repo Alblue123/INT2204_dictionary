@@ -1,3 +1,3 @@
 package application.controller;
 
-public class EditWordViewController {}
+public class EditWordViewController extends MasterView {}

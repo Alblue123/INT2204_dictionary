@@ -1,5 +1,7 @@
 package application;
 
+import application.Dictionary.OnlineDictionary;
+import application.backCode.Dictionary;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,15 +13,17 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MainApplication extends Application {
+    public static Dictionary dictionary;
     
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, SQLException {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainMenu.fxml"));
             Scene scene = new Scene(root);
@@ -33,6 +37,9 @@ public class MainApplication extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        dictionary = new OnlineDictionary();
+        dictionary.init();
     }
 
     @FXML

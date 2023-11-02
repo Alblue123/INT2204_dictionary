@@ -1,5 +1,5 @@
 package application.controller;
 
-public class WordViewController {
+public class WordViewController extends MasterView {
 
 }

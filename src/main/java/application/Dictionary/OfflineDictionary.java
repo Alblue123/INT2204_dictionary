@@ -16,7 +16,7 @@ public class OfflineDictionary extends Dictionary {
     }
 
     @Override
-    public ArrayList<String> getDefinedWords() {
+    public ArrayList<String> getTargetWords() {
         ArrayList<String> definedWords = new ArrayList<>();
         for (Word word : words) {
             String tar = word.getWordTarget();
@@ -35,7 +35,7 @@ public class OfflineDictionary extends Dictionary {
 
         Word word = new Word(target, explain, "");
         words.add(word);
-        Trie.add(word);
+        Trie.add(target);
     }
 
     @Override

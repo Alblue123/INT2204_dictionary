@@ -1,5 +1,6 @@
 package application.backCode;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public abstract class Dictionary {
     public abstract ArrayList<Word> getWords();
 
     /** definition getter. */
-    public abstract ArrayList<String> getDefinedWords();
+    public abstract ArrayList<String> getTargetWords();
 
     /**
      * Inert new word.
@@ -29,4 +30,6 @@ public abstract class Dictionary {
      * @return that word
      */
     public abstract String search(String wordTarget);
+
+  public void init() throws SQLException {}
 }
