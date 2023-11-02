@@ -31,5 +31,8 @@ public abstract class Dictionary {
      */
     public abstract String search(String wordTarget);
 
-  public void init() throws SQLException {}
+    public abstract void edit(String target, String definition);
+
+    public void init() throws SQLException {}
+
 }

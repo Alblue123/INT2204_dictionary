@@ -116,19 +116,6 @@ public class MasterView implements Initializable {
         }
     }
 
-    @FXML
-    public void changeSearch(KeyEvent e) {
-        if (e.getSource() == start_search) {
-            String searchText = start_search.getText();
-            if (!searchText.isEmpty()) {
-                searchList();
-            } else {
-                search_list.getItems().clear();
-            }
-        }
-    }
-
-
     public void init(MainMenuController mainMenuController) {
         this.mainMenuController = mainMenuController;
         loadWordView();

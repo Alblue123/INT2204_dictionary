@@ -179,4 +179,22 @@ public class OnlineDictionary extends Dictionary {
         }
         return new ArrayList<>();
     }
+
+    @Override
+    public void edit(String target, String definition) {
+        final String query = "UPDATE dict SET description = ? WHERE word = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, definition);
+            ps.setString(2, target);
+            try {
+                ps.executeUpdate();
+            } finally {
+                close(ps);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
