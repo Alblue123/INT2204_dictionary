@@ -9,7 +9,7 @@
    <children>
       <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="375.0" prefWidth="275.0" styleClass="view" stylesheets="@../css/mainMenu.css">
          <children>
-            <TextField fx:id="start_search" layoutX="17.0" layoutY="14.0" onAction="#findTarget" onKeyTyped="#searchList" prefHeight="25.0" prefWidth="242.0" promptText="Enter your word" styleClass="search_bar" stylesheets="@../css/mainMenu.css">
+            <TextField fx:id="start_search" layoutX="17.0" layoutY="14.0" onAction="#enterInput" onKeyTyped="#searchList" prefHeight="25.0" prefWidth="242.0" promptText="Enter your word" styleClass="search_bar" stylesheets="@../css/mainMenu.css">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>

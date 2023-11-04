@@ -52,7 +52,7 @@ public class OnlineDictionary extends Dictionary {
 
     @Override
     public String search(String target) {
-        final String query = "SELECT * FROM dict WHERE word = ?";
+        final String query = "SELECT html FROM dict WHERE word = ?";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -60,7 +60,7 @@ public class OnlineDictionary extends Dictionary {
             ps.setString(1, target);
             rs = ps.executeQuery();
             if (rs.next()) {
-                return rs.getString("description");
+                return rs.getString(1);
             } else {
                 return "Error: Word not found";
             }

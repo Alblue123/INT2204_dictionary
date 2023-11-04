@@ -27,12 +27,6 @@ public class MainMenuController implements Initializable {
     @FXML private AnchorPane game_pane;
     @FXML private AnchorPane wordlist_pane;
 
-    private OfflineDictionary offlineDictionary = new OfflineDictionary();
-
-    public OfflineDictionary getOfflineDictionary() {
-        return offlineDictionary;
-    }
-
     /**
      * switch the pane and track the current pane
      *
@@ -46,6 +40,7 @@ public class MainMenuController implements Initializable {
     /** Show the search view. */
     public void searchView() {
         this.setToDo(search_pane);
+        searchController.init();
     }
 
     /** show the add view. */
@@ -101,8 +96,6 @@ public class MainMenuController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/fxml/search_view.fxml"));
             search_pane = fxmlLoader.load();
             searchController = fxmlLoader.getController();
-            searchController.loadWordView();
-            searchController.searchList();
         } catch (Exception e) {
             e.printStackTrace();
         }
