@@ -9,14 +9,17 @@ public class GameController {
 
     @FXML
     private AnchorPane game_view;
+    private WordyGame wordygame;
 
     /** load game view. */
-    public void loadWordView() {
+    public void loadWordyView() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/game_view.fxml"));
             VBox wordBox = fxmlLoader.load();
             game_view.getChildren().addAll(wordBox);
+        
+            wordygame = new WordyGame(wordBox);
         } catch (Exception e) {
             e.printStackTrace();
         }
