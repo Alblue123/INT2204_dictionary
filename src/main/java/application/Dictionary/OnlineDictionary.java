@@ -82,22 +82,25 @@ public class OnlineDictionary extends Dictionary {
     }
 
     @Override
-    public void insert(String wordTarget, String wordExplain) {
-        final String query = "INSERT INTO dict(word, description) VALUES(?, ?)";
+    public boolean insert(String wordTarget, String wordExplain) {
+        final String query = "INSERT INTO dict(word, html) VALUES(?, ?)";
         PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, wordTarget);
             ps.setString(2, wordExplain);
-            ps.executeUpdate();
+            try {
+                ps.executeUpdate();
+            } catch (SQLIntegrityConstraintViolationException e) {
+                return false;
+            } finally {
+                close(ps);
+            }
+            Trie.add(wordTarget);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (ps != null) ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            return false;
         }
     }
 
@@ -156,7 +159,7 @@ public class OnlineDictionary extends Dictionary {
             try {
                 ArrayList<Word> words = new ArrayList<>();
                 while (rs.next()) {
-                    words.add(new Word(rs.getString(1), rs.getString(3)));
+                    words.add(new Word(rs.getString(1), rs.getString(2)));
                 }
                 return words;
 
@@ -181,20 +184,24 @@ public class OnlineDictionary extends Dictionary {
     }
 
     @Override
-    public void edit(String target, String definition) {
-        final String query = "UPDATE dict SET description = ? WHERE word = ?";
+    public boolean edit(String target, String definition) {
+        final String query = "UPDATE dict SET html = ? WHERE word = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, definition);
             ps.setString(2, target);
             try {
-                ps.executeUpdate();
+                int up = ps.executeUpdate();
+                if (up == 0) {
+                    return false;
+                }
             } finally {
                 close(ps);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
 }

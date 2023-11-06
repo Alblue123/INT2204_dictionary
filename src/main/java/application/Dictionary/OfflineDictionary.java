@@ -26,16 +26,17 @@ public class OfflineDictionary extends Dictionary {
     }
 
     @Override
-    public void insert(String target, String explain) {
+    public boolean insert(String target, String explain) {
         for (Word word : words) {
             if (word.getWordTarget().equals(target)) {
-                return;
+                return false;
             }
         }
 
         Word word = new Word(target, explain, "");
         words.add(word);
         Trie.add(target);
+        return true;
     }
 
     @Override
@@ -64,13 +65,14 @@ public class OfflineDictionary extends Dictionary {
      * @param target     the current word
      * @param definition the new definition
      */
-    public void edit(String target, String definition) {
+    public boolean edit(String target, String definition) {
         for (Word word : words) {
             if (word.getWordTarget().equals(target)) {
                 word.setWordExplain(definition);
                 Trie.update(target, definition);
-                break;
+                return true;
             }
         }
+        return false;
     }
 }

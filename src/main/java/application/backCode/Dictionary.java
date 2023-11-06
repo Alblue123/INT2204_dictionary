@@ -16,7 +16,7 @@ public abstract class Dictionary {
      * @param wordTarget  the target word
      * @param wordExplain the definition of that word
      */
-    public abstract void insert(String wordTarget, String wordExplain);
+    public abstract boolean insert(String wordTarget, String wordExplain);
 
     /**
      * Delete a word.
@@ -31,7 +31,7 @@ public abstract class Dictionary {
      */
     public abstract String search(String wordTarget);
 
-    public abstract void edit(String target, String definition);
+    public abstract boolean edit(String target, String definition);
 
     public void init() throws SQLException {}
 

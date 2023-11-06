@@ -17,15 +17,16 @@ public class MainMenuController implements Initializable {
 
     @FXML private AnchorPane todo_pane;
 
-    @FXML private AnchorPane current_pane;
-    @FXML private AnchorPane search_pane;
-    @FXML private AnchorPane add_word_pane;
-    @FXML private AnchorPane edit_word_pane;
-    @FXML private SearchController searchController;
-    @FXML private WordListController wordListController;
-    @FXML private AnchorPane gg_translate_pane;
-    @FXML private AnchorPane game_pane;
-    @FXML private AnchorPane wordlist_pane;
+    private AnchorPane current_pane;
+    private AnchorPane search_pane = null;
+    private AnchorPane add_word_pane = null;
+    private AnchorPane edit_word_pane = null;
+    private SearchController searchController;
+    private AddWordViewController addWordViewController;
+    private WordListController wordListController;
+    private AnchorPane gg_translate_pane;
+    private AnchorPane game_pane;
+    private AnchorPane wordlist_pane;
 
     /**
      * switch the pane and track the current pane
@@ -104,6 +105,7 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/add_word_view.fxml"));
             add_word_pane = fxmlLoader.load();
+            addWordViewController = fxmlLoader.getController();
         } catch (Exception e) {
             e.printStackTrace();
         }
