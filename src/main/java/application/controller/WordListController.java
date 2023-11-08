@@ -2,33 +2,29 @@ package application.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.util.Objects;
+import java.io.*;
+import java.net.URL;
+import java.util.*;
 
-public class WordListController {
-    @FXML private AnchorPane wl_view;
+import static application.MainApplication.dictionary;
+
+public class WordListController extends MasterView implements Initializable {
     @FXML private Button btn_export;
-
-    /** load word view. */
-    public void loadWordView() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/fxml/word_view.fxml"));
-            VBox wordBox = fxmlLoader.load();
-            wl_view.getChildren().addAll(wordBox);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    @FXML private TreeView treeView;
+    private Map<String, TreeItem<String>> tree = new HashMap<>();
 
     /** jump to export view. */
     public void export(ActionEvent event) {
@@ -48,4 +44,12 @@ public class WordListController {
             e.printStackTrace();
         }
     }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+
 }

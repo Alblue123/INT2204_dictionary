@@ -23,6 +23,8 @@ public class MainMenuController implements Initializable {
     private AnchorPane edit_word_pane = null;
     private SearchController searchController;
     private AddWordViewController addWordViewController;
+    private EditWordViewController editWordViewController;
+    private GoogleTranslateController googleTranslateController;
     private WordListController wordListController;
     private AnchorPane gg_translate_pane;
     private AnchorPane game_pane;
@@ -57,6 +59,7 @@ public class MainMenuController implements Initializable {
     /** show wordlist view. */
     public void wordlistView() {
         this.setToDo(wordlist_pane);
+        wordListController.init();
     }
 
     /** show gg translate view. */
@@ -114,6 +117,7 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/edit_word_view.fxml"));
             edit_word_pane = fxmlLoader.load();
+            editWordViewController = fxmlLoader.getController();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -122,6 +126,7 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/googletranslate_view.fxml"));
             gg_translate_pane = fxmlLoader.load();
+            googleTranslateController = fxmlLoader.getController();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -139,7 +144,6 @@ public class MainMenuController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/fxml/word_list_view.fxml"));
             wordlist_pane = fxmlLoader.load();
             wordListController= fxmlLoader.getController();
-            wordListController.loadWordView();
         } catch (Exception e) {
             e.printStackTrace();
         }

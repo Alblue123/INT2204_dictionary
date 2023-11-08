@@ -42,13 +42,6 @@ public class MasterView implements Initializable {
 
     }
 
-    public void reset() {
-        start_search.setText("");
-        search_view.getChildren().clear();
-        wordViewController.init("", "");
-    }
-
-
     public void init() {
         if (wordViewController == null) {
             loadWordView("", "");

@@ -42,7 +42,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label layoutX="217.0" layoutY="-2.0" prefHeight="49.0" prefWidth="28.0">
+                  <Label fx:id="book_mark" layoutX="217.0" layoutY="-2.0" onMouseClicked="#clickBookMark" prefHeight="49.0" prefWidth="28.0">
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -40,6 +40,6 @@
             <TreeView fx:id="treeView" layoutX="38.0" layoutY="27.0" prefHeight="270.0" prefWidth="200.0" stylesheets="@../css/mainMenu.css" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="wl_view" layoutX="311.0" layoutY="23.0" prefHeight="375.0" prefWidth="275.0" styleClass="view" stylesheets="@../css/mainMenu.css" />
+      <AnchorPane fx:id="search_view" layoutX="311.0" layoutY="23.0" prefHeight="375.0" prefWidth="275.0" styleClass="view" stylesheets="@../css/mainMenu.css" />
    </children>
 </AnchorPane>
