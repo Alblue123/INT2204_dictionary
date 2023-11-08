@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.API.Translator;
+import application.API.VoiceRSS;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,6 +43,11 @@ public class GoogleTranslateController implements Initializable {
             upper_label.setText("English");
             below_label.setText("Vietnamese");
         }
+    }
+
+    public void speak() throws Exception {
+        String source = sourceText.getText();
+        VoiceRSS.speakWords(source);
     }
 
     @Override

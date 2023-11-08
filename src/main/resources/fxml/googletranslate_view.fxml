@@ -20,7 +20,7 @@
             <Font size="14.0" />
          </font>
       </TextArea>
-      <Button fx:id="btn_speak" layoutX="46.0" layoutY="185.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="57.0">
+      <Button fx:id="btn_speak" layoutX="46.0" layoutY="185.0" mnemonicParsing="false" onAction="#speak" prefHeight="37.0" prefWidth="57.0">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
