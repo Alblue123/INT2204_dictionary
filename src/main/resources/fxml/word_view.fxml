@@ -24,7 +24,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label layoutX="143.0" layoutY="8.0" prefHeight="28.0" prefWidth="29.0">
+                  <Label fx:id="word_speak" layoutX="143.0" layoutY="8.0" onMouseClicked="#clickSpeaker" prefHeight="28.0" prefWidth="29.0">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -33,7 +33,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label layoutX="181.0" layoutY="4.0" prefHeight="35.0" prefWidth="29.0">
+                  <Label fx:id="word_delete" layoutX="181.0" layoutY="4.0" onMouseClicked="#clickDelete" prefHeight="35.0" prefWidth="29.0">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
