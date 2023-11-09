@@ -43,11 +43,17 @@ public class GoogleTranslateController implements Initializable {
             upper_label.setText("English");
             below_label.setText("Vietnamese");
         }
+        sourceText.clear();
+        desText.clear();
     }
 
     public void speak() throws Exception {
         String source = sourceText.getText();
-        VoiceRSS.speakWords(source);
+        if (isVietnamese) {
+            VoiceRSS.speakWords(source, "Chi", "vi-vn");
+        } else {
+            VoiceRSS.speakWords(source, "Nancy", "en-gb");
+        }
     }
 
     @Override

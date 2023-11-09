@@ -15,10 +15,8 @@ public class VoiceRSS {
     private static final String key = "6adccc1ed7514fe0a3908794c2449bda";
     private static final String path = "src/main/resources/media/tts.mp3";
 
-    public static final String name = "Nancy";
-    public static final String language = "en-gb";
-
-    public static void speakWords(String content) throws Exception {
+    public static void speakWords(String content, String name, String language)
+            throws Exception {
         VoiceProvider tts = new VoiceProvider(key);
         VoiceParameters params = new VoiceParameters(content, AudioFormat.Format_44KHZ.AF_44khz_16bit_stereo);
         params.setBase64(false);
