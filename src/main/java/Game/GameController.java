@@ -1,4 +1,4 @@
-package application.controller;
+package application.Game;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,11 @@ import javafx.scene.layout.VBox;
 import java.util.List;
 import java.util.ArrayList;
 import javafx.scene.control.label;
+import java.util.Arrays;
+import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 
 public abstract class GameController {
 

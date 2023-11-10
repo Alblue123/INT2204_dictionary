@@ -1,34 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.BoggleController">
-   <center>
-      <GridPane alignment="center" hgap="5" vgap="5">
-         <!-- Define the Boggle game board here -->
-         <Button text="A" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-         <Button text="B" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-         <!-- Add more buttons for the game board as needed -->
-      </GridPane>
-   </center>
-   <top>
-      <HBox alignment="CENTER" spacing="10">
-         <Label text="Time: 0:00" id="timerLabel"/>
-         <Button text="Start New Game" onAction="#startNewGame"/>
-      </HBox>
-   </top>
-   <bottom>
-      <VBox alignment="CENTER" spacing="10">
-         <Label text="Enter a Word:"/>
-         <HBox alignment="CENTER" spacing="10">
-            <TextField fx:id="wordInput" promptText="Type here"/>
-            <Button text="Submit" onAction="#submitWord"/>
-         </HBox>
-      </VBox>
-   </bottom>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
+   <children>
+      <AnchorPane prefHeight="60.0" prefWidth="720.0" style="-fx-background-color: #084484;">
+         <children>
+            <Label layoutX="67.0" layoutY="14.0" prefHeight="40.0" prefWidth="223.0" text="UET_DICTIONARY" textAlignment="CENTER" textFill="#d3d3d2">
+               <font>
+                  <Font name="Segoe UI Black" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="65.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane layoutY="60.0" prefHeight="420.0" prefWidth="60.0" style="-fx-background-color: #084484;">
+         <children>
+            <Button fx:id="btn_search" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/search_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_add" layoutY="62.0" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/add_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_wl" layoutY="124.0" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/wl_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_light" layoutY="186.0" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/grey_sun_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></AnchorPane>
+      <AnchorPane layoutX="658.0" layoutY="60.0" prefHeight="420.0" prefWidth="60.0" style="-fx-background-color: #084484;">
+         <children>
+            <Button fx:id="btn_edit" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/edit_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_info" layoutY="62.0" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/grey_info_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_gg" layoutY="190.0" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/translate_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_game" layoutY="128.0" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/game_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></AnchorPane>
+      <AnchorPane fx:id="gameBoardGrid" layoutX="61.0" layoutY="60.0" opacity="0.81" prefHeight="420.0" prefWidth="598.0" style="-fx-background-color: #f2b505;">
+         <children>
+            <GridPane layoutX="187.0" layoutY="71.0" style="-fx-background-color: #0496C7;">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="A" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="B" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="C" GridPane.columnIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="D" GridPane.columnIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="E" GridPane.columnIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="F" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="G" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="H" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="I" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="J" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="K" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="L" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="M" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="N" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="O" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="P" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="Q" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button maxWidth="45.0" mnemonicParsing="false" prefHeight="45.0" text="R" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="S" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="T" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="U" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="V" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="W" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="X" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="Y" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <TextField layoutX="187.0" layoutY="326.0" prefHeight="32.0" prefWidth="225.0" promptText="Your word here..." />
+            <Button layoutX="273.0" layoutY="374.0" mnemonicParsing="false" text="Submit" />
+            <Label fx:id="scoreLabel" layoutX="20.0" layoutY="20.0" style="-fx-background-color: #000000;" text="Score: 0" textFill="WHITE" />
+            <Button layoutX="433.0" layoutY="71.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="32.0" text="Shuffle" />
+         </children></AnchorPane>
+      <Button mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>

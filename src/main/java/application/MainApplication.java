@@ -7,8 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.stage.Stage;
 
 public class MainApplication extends Application {
     
