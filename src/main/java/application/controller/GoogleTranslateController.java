@@ -24,7 +24,6 @@ public class GoogleTranslateController implements Initializable {
     @FXML private Label below_label;
     private boolean isVietnamese = false;
 
-
     public void translate() {
         String source = sourceText.getText();
         if (isVietnamese) {
@@ -58,6 +57,7 @@ public class GoogleTranslateController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        sourceText.setWrapText(true);
+        desText.setWrapText(true);
     }
 }

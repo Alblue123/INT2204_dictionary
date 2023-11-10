@@ -48,6 +48,7 @@ public class MasterView implements Initializable {
         }
 
     }
+
     @FXML
     public void enterInput(ActionEvent e) {
         if (e.getSource() == start_search) {
@@ -57,6 +58,9 @@ public class MasterView implements Initializable {
     /** load word view. */
     protected void loadWordView(String target, String explain) {
         try {
+            if (!search_view.getChildren().isEmpty()) {
+                search_view.getChildren().clear();
+            }
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/word_view.fxml"));
             VBox wordBox = fxmlLoader.load();

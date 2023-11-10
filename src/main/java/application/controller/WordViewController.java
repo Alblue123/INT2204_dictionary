@@ -49,7 +49,6 @@ public class WordViewController extends MasterView {
         if (word != null) {
             VoiceRSS.speakWords(word, "Nancy", "en-gb");
         }
-
     }
 
 
