@@ -12,14 +12,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
-    @FXML private Button btn_search, btn_add, btn_edit;
+    @FXML private Button btn_search, btn_add, btn_edit, btn_game;
 
     @FXML private AnchorPane todo_pane;
+
 
     private AnchorPane current_pane;
     private AnchorPane search_pane;
     private AnchorPane add_word_pane;
     private AnchorPane edit_word_pane;
+    private AnchorPane game_pane;
     private SearchController searchController;
 
     /**
@@ -45,6 +47,9 @@ public class MainMenuController implements Initializable {
     public void editWordView() {
         this.setToDo(edit_word_pane);
     }
+    public void gameView() {
+        this.setToDo(game_pane);
+    }
 
     /**
      * On clicking switch scene
@@ -53,14 +58,15 @@ public class MainMenuController implements Initializable {
      */
     public void onClick(ActionEvent ev) {
         if (ev.getSource() == btn_search) {
-            this.searchView();
+            searchView();
         } else if (ev.getSource() == btn_add) {
-            this.addWordView();
+            addWordView();
         } else if (ev.getSource() == btn_edit) {
-            this.editWordView();
+            editWordView();
+        } else if (ev.getSource() == btn_game) {
+            gameView();
         }
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -87,8 +93,17 @@ public class MainMenuController implements Initializable {
             edit_word_pane = fxmlLoader.load();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        } 
 
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/game_view.fxml"));
+            game_pane = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
         this.searchView();
     }
+    
 }

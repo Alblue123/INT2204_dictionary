@@ -4,14 +4,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import java.util.List;
-import java.util.ArrayList;
-import javafx.scene.control.label;
-import java.util.Arrays;
+import java.io.IOException;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+
 
 public abstract class GameController {
 
@@ -24,42 +29,55 @@ public abstract class GameController {
         wordyGame = new WordyGame(5, 5); 
     }
 
+    public void playButtonClicked(ActionEvent event) {
+        try {
+            // Load the playing view FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/playing_view.fxml"));
+            AnchorPane playingView = loader.load();
+
+            // Create a new scene with the playing view
+            Scene playingScene = new Scene(playingView);
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the scene to the stage
+            stage.setScene(playingScene);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public GridPane getGameBoardGrid() {
         return gameBoardGrid;
     }
 
-    private void onButtonClick(int row, int col) {
-        // Append the character of the clicked button to the StringBuilder
-        clickedCharacters.append(wordyGame.getLetterAt(row, col));
+    private StringBuilder clickedCharacters = new StringBuilder();
 
-        // Update the wordInputField
-        if (wordInputField != null) {
-            wordInputField.setText(clickedCharacters.toString());
-        }
-        
-        
-        System.out.println("Clicked characters: " + clickedCharacters.toString());
-        
-    }
-
+    
     /** load game view. */
-public void loadWordView() {
-    try {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/fxml/playing_view.fxml"));
-        VBox wordBox = fxmlLoader.load();
-        game_view.getChildren().addAll(wordBox);
-
-        GameView gameViewController = fxmlLoader.getController();
-        gameViewController.setWordyGame(wordyGame);
-        gameViewController.setWordInputField(wordInputField);
-
-        // Pass the game board GridPane to initializeBoard
-        wordyGame.initializeBoard(gameViewController.getGameBoardGrid());
-    } catch (Exception e) {
-        e.printStackTrace();
+    public void loadWordView() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/playing_view.fxml"));
+            VBox wordBox = fxmlLoader.load();
+    
+            // Assuming playing_view.fxml has a GridPane with fx:id="gameBoardGrid"
+            GridPane gameBoardGrid = (GridPane) wordBox.lookup("#gameBoardGrid");
+            wordyGame.initializeBoard(gameBoardGrid);
+    
+            game_view.getChildren().addAll(wordBox);
+    
+            // You can also set other properties directly if needed
+            // For example:
+            // wordyGame.setSomeProperty(fxmlLoader.getController().getSomeProperty());
+    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
+    
 
     @FXML
     public void startNewGame(ActionEvent event) {
@@ -82,6 +100,10 @@ public void loadWordView() {
         // Handle an invalid word (e.g., display an error message).
             displayInvalidWordError();
         }
+    }
+
+    private void displayInvalidWordError() {
+        System.out.println("Error: Invalid word. Please enter a valid word.");
     }
 
     private void displayDuplicateWordError() {

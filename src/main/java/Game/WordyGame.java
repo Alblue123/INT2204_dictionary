@@ -1,12 +1,18 @@
+package Game;
+
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 public class WordyGame {
     private char[][] board;
@@ -41,7 +47,9 @@ public class WordyGame {
         this.gameBoardGrid = gameBoardGrid;
     }
 
-    public void initializeBoardUI() {
+    public void initializeBoard(GridPane gameBoardGrid) {
+        // Assuming your board is already created and contains characters
+
         int numRows = board.length;
         int numCols = board[0].length;
 
@@ -57,8 +65,25 @@ public class WordyGame {
         Button button = new Button(Character.toString(letter));
         button.setMinSize(45, 45);
         button.setMaxSize(45, 45);
-        button.setOnAction(event -> onButtonClick(letter));
+        button.setOnAction(event -> handleButtonClick(rows,cols));
         return button;
+    }
+
+    private void handleButtonClick(int row, int col) {
+        // Your button click logic in the WordyGame class.
+        // This might involve updating the game state or performing some action.
+        char clickedCharacter = getLetterAt(row, col);
+        
+        // Append the character of the clicked button to the StringBuilder
+        clickedCharacters.append(clickedCharacter);
+    
+        // Update the wordInputField
+        if (wordInputField != null) {
+            wordInputField.setText(clickedCharacters.toString());
+        }
+    
+        System.out.println("Clicked characters: " + clickedCharacters.toString());
+        // Add more logic as needed.
     }
 
     public char[][] getBoard() {
@@ -69,12 +94,33 @@ public class WordyGame {
         this.wordInputField = wordInputField;
     }
 
+    public char getLetterAt(int row, int col) {
+        if (row >= 0 && row < rows && col >= 0 && col < cols) {
+            return board[row][col];
+        } else {
+            // Handle invalid indices, for example, return a placeholder character.
+            return ' ';
+        }
+    }
+
+    public String getUserInputForWordSubmission() {
+        // Assuming you have a TextField named wordInputField
+        if (wordInputField != null) {
+            return wordInputField.getText();
+        } else {
+            return ""; // or handle the case where wordInputField is not set
+        }
+    }
+
     public boolean isWordValid(String word) {
         return validWords.contains(word);
     }
 
     public boolean isWordDuplicate(String word) {
         return submittedWords.contains(word);
+    }
+    public void addSubmittedWord(String word) {
+        submittedWords.add(word);
     }
 
     public void shuffleBoard() {
@@ -157,7 +203,7 @@ public class WordyGame {
         score = 0;
         submittedWords.clear();
         resetTimer();
-        initializeBoard();
+        initializeBoard(gameBoardGrid);
         gameInProgress = false;
         
     }
@@ -184,7 +230,7 @@ public class WordyGame {
         return elapsedTime;
     }
     public void endGame() {
-        int finalScore = calculateFinalScore();
+        int finalScore = calculateFinalScore(new ArrayList<>());
         String gameOutcome = determineGameOutcome(finalScore);
         displayGameOutcomeAndScore(gameOutcome, finalScore);
         resetGameBoard();

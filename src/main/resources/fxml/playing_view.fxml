@@ -154,7 +154,7 @@
             <Button layoutX="273.0" layoutY="374.0" mnemonicParsing="false" text="Submit" />
             <Label fx:id="scoreLabel" layoutX="20.0" layoutY="20.0" style="-fx-background-color: #000000;" text="Score: 0" textFill="WHITE" />
             <Button layoutX="433.0" layoutY="71.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="32.0" text="Shuffle" />
+            <Button layoutX="36.0" layoutY="330.0" mnemonicParsing="false" text="Timer" />
          </children></AnchorPane>
-      <Button mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

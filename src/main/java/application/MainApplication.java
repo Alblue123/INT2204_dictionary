@@ -16,7 +16,7 @@ public class MainApplication extends Application {
         launch(args);
     }
 
-    private String api = "AIzaSyD5xzg5OW5IuoAut9vxgogos4z2bTLSuuo";
+    
 
     @Override
     public void start(Stage stage) throws IOException {
