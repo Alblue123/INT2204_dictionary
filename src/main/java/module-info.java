@@ -7,6 +7,7 @@ module application {
     requires voicerss.tts;
     requires javafx.media;
     requires java.desktop;
+    requires org.apache.tika.core;
 
     opens application.controller to javafx.fxml;
     exports application;

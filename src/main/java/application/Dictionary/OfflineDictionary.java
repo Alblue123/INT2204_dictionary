@@ -33,7 +33,7 @@ public class OfflineDictionary extends Dictionary {
             }
         }
 
-        Word word = new Word(target, explain, "");
+        Word word = new Word(target, explain);
         words.add(word);
         Trie.add(target);
         return true;
