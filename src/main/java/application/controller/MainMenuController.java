@@ -58,13 +58,13 @@ public class MainMenuController implements Initializable {
      */
     public void onClick(ActionEvent ev) {
         if (ev.getSource() == btn_search) {
-            searchView();
+            this.searchView();
         } else if (ev.getSource() == btn_add) {
-            addWordView();
+            this.addWordView();
         } else if (ev.getSource() == btn_edit) {
-            editWordView();
+            this.editWordView();
         } else if (ev.getSource() == btn_game) {
-            gameView();
+            this.gameView();
         }
     }
     @Override
@@ -99,7 +99,7 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/game_view.fxml"));
             game_pane = fxmlLoader.load();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     
