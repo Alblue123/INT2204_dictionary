@@ -1,19 +1,14 @@
 package application.controller;
 
 import application.API.VoiceRSS;
-import application.backCode.BookMark;
 import application.backCode.Trie;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.web.WebView;
 import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
 import java.util.Objects;
 
 import static application.MainApplication.dictionary;
@@ -31,7 +26,6 @@ public class WordViewController extends MasterView {
     private ImageView my_fav;
     @FXML
     private Label word_speaker;
-    private boolean checkFav = false;
 
     Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_icon.png")));
     Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_filled_icon.png")));
@@ -41,16 +35,13 @@ public class WordViewController extends MasterView {
 
         if (!target.isEmpty()) {
             try {
-                boolean hasWord = BookMark.findWordInFile(target);
-                if (hasWord) {
+                if (dictionary.checkFavorite(target)) {
                     my_fav.setImage(image2);
-                    checkFav = true;
                 } else {
                     my_fav.setImage(image1);
-                    checkFav = false;
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
@@ -79,24 +70,23 @@ public class WordViewController extends MasterView {
 
     public void handleAddBookMark() {
         String word = view_word_word.getText();
-        BookMark.addToFile(word);
+        dictionary.updateFavorite(word, true);
     }
 
     public void handleRemoveBookMark() {
         String word = view_word_word.getText();
-        BookMark.deleteWord(word);
+        dictionary.updateFavorite(word, false);
     }
 
     @FXML
     public void clickBookMark(MouseEvent e) {
-        if (!view_word_word.getText().isEmpty()) {
-            if (!checkFav) {
+        String word = view_word_word.getText();
+        if (!word.isEmpty()) {
+            if (!dictionary.checkFavorite(word)) {
                 my_fav.setImage(image2);
-                checkFav = true;
                 handleAddBookMark();
             } else {
                 my_fav.setImage(image1);
-                checkFav = false;
                 handleRemoveBookMark();
             }
         }

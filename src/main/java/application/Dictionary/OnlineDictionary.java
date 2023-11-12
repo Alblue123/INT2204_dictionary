@@ -5,9 +5,7 @@ import application.backCode.Trie;
 import application.backCode.Word;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class OnlineDictionary extends Dictionary {
     private static final String url = "jdbc:sqlite:src/main/resources/data/dictionary.db";
@@ -49,6 +47,88 @@ public class OnlineDictionary extends Dictionary {
             Trie.add(word);
         }
     }
+
+    @Override
+    public void updateFavorite(String target, boolean favorite) {
+        final String query = "UPDATE dict SET favorite = ? WHERE word = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, favorite ? 1 : 0);
+            ps.setString(2, target);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    @Override
+    public boolean checkFavorite(String target) {
+        final String query = "SELECT favorite FROM dict WHERE word = ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, target);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int favorite = rs.getInt(1);
+                return favorite != 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Set<String> getFavoriteWords() {
+        Set<String> favoriteWords = new HashSet<>();
+        final String query = "SELECT word FROM dict WHERE favorite = 1";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                favoriteWords.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return favoriteWords;
+    }
+
+
 
     @Override
     public String search(String target) {

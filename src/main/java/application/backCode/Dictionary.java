@@ -3,6 +3,7 @@ package application.backCode;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public abstract class Dictionary {
     /** words getter. */
@@ -35,4 +36,14 @@ public abstract class Dictionary {
 
     public void init() throws SQLException {}
 
+    public void updateFavorite(String target, boolean favorite) {
+    }
+
+    public boolean checkFavorite(String target) {
+        return true;
+    }
+
+    public Set<String> getFavoriteWords() {
+        return null;
+    }
 }
