@@ -73,6 +73,10 @@ public class WordyGame {
         return validWords.contains(word);
     }
 
+    public boolean isWordDuplicate(String word) {
+        return submittedWords.contains(word);
+    }
+
     public void shuffleBoard() {
         // Create a copy of the current game board.
         char[][] newBoard = new char[rows][cols];

@@ -1,4 +1,4 @@
-package application.Game;
+package Game;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,6 +82,11 @@ public void loadWordView() {
         // Handle an invalid word (e.g., display an error message).
             displayInvalidWordError();
         }
+    }
+
+    private void displayDuplicateWordError() {
+        
+        System.out.println("Error: Word already submitted. Choose a different word.");
     }
 
     @FXML
