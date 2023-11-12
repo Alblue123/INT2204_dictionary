@@ -22,12 +22,9 @@ import java.util.*;
 import static application.MainApplication.dictionary;
 
 public class WordListController extends MasterView implements Initializable {
-    @FXML private Button btn_export;
-    @FXML private TreeView treeView;
-    private Map<String, TreeItem<String>> tree = new HashMap<>();
 
     /** jump to export view. */
-    public void export(ActionEvent event) {
+    /*public void export(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/export.fxml"));
             Parent root = loader.load();
@@ -43,7 +40,8 @@ public class WordListController extends MasterView implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
+
 
 
     @Override

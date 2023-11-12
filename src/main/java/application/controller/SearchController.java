@@ -20,8 +20,6 @@ import static application.MainApplication.dictionary;
 
 public class SearchController extends MasterView {
     @FXML
-    private ListView<String> search_list;
-    @FXML
     public void searchList() {
         search_list.getItems().clear();
         String searchText = start_search.getText();

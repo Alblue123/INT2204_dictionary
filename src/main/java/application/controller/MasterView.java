@@ -29,6 +29,8 @@ import static application.MainApplication.dictionary;
 
 public class MasterView implements Initializable {
     @FXML
+    protected ListView<String> search_list;
+    @FXML
     protected TextField start_search;
     @FXML
     protected WordViewController wordViewController;
