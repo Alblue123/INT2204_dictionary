@@ -1,4 +1,4 @@
-package Game;
+package application.Game;
 
 import java.util.Random;
 import java.util.List;
@@ -193,8 +193,8 @@ public class WordyGame {
 
     public void displayGameOutcomeAndScore(String gameOutcome, int finalScore) {
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Game Outcome");
-        alert.setHeaderText("Game Over");
+        alert.setTitle("application.Game Outcome");
+        alert.setHeaderText("application.Game Over");
         alert.setContentText("Outcome: " + gameOutcome + "\nFinal Score: " + finalScore);
         alert.showAndWait();
     }

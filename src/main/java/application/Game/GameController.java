@@ -1,4 +1,4 @@
-package Game;
+package application.Game;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -147,8 +147,8 @@ public abstract class GameController {
 
     public void displayGameOutcomeAndScore(String outcome, int finalScore) {
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Game Outcome");
-        alert.setHeaderText("Game Over");
+        alert.setTitle("application.Game Outcome");
+        alert.setHeaderText("application.Game Over");
         alert.setContentText("Outcome: " + outcome + "\nFinal Score: " + finalScore);
         alert.showAndWait();
     }

@@ -29,7 +29,6 @@ public class MainMenuController implements Initializable {
     private GoogleTranslateController googleTranslateController;
     private WordListController wordListController;
     private AnchorPane gg_translate_pane;
-    private AnchorPane game_pane;
     private AnchorPane wordlist_pane;
 
     /**
@@ -56,9 +55,6 @@ public class MainMenuController implements Initializable {
     /** show edit wordView. */
     public void editWordView() {
         this.setToDo(edit_word_pane);
-    }
-    public void gameView() {
-        this.setToDo(game_pane);
     }
 
     /** show wordlist view. */
