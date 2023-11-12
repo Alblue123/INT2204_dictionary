@@ -17,10 +17,12 @@ public class MainMenuController implements Initializable {
 
     @FXML private AnchorPane todo_pane;
 
+
     private AnchorPane current_pane;
-    private AnchorPane search_pane = null;
-    private AnchorPane add_word_pane = null;
-    private AnchorPane edit_word_pane = null;
+    private AnchorPane search_pane;
+    private AnchorPane add_word_pane;
+    private AnchorPane edit_word_pane;
+    private AnchorPane game_pane;
     private SearchController searchController;
     private AddWordViewController addWordViewController;
     private EditWordViewController editWordViewController;
@@ -54,6 +56,9 @@ public class MainMenuController implements Initializable {
     /** show edit wordView. */
     public void editWordView() {
         this.setToDo(edit_word_pane);
+    }
+    public void gameView() {
+        this.setToDo(game_pane);
     }
 
     /** show wordlist view. */
@@ -92,7 +97,6 @@ public class MainMenuController implements Initializable {
             this.wordlistView();
         }
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -120,7 +124,7 @@ public class MainMenuController implements Initializable {
             editWordViewController = fxmlLoader.getController();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        } 
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -149,4 +153,5 @@ public class MainMenuController implements Initializable {
         }
         this.searchView();
     }
+    
 }

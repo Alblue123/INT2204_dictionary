@@ -2,6 +2,8 @@ package application.controller;
 
 import application.backCode.Trie;
 import javafx.event.ActionEvent;
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
@@ -71,4 +73,5 @@ public class SearchController extends MasterView {
         }
 
     }
+    
 }

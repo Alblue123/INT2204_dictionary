@@ -9,11 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.stage.Stage;
-
-
 import java.io.IOException;
 import java.sql.SQLException;
+import javafx.stage.Stage;
 
 public class MainApplication extends Application {
     public static Dictionary dictionary;
@@ -21,6 +19,8 @@ public class MainApplication extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {

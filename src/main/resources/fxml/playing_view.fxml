@@ -105,6 +105,56 @@
                </graphic>
             </Button>
          </children></AnchorPane>
-      <AnchorPane fx:id="todo_pane" layoutX="61.0" layoutY="60.0" opacity="0.81" prefHeight="420.0" prefWidth="598.0" />
+      <AnchorPane fx:id="gameBoardGrid" layoutX="61.0" layoutY="60.0" opacity="0.81" prefHeight="420.0" prefWidth="598.0" style="-fx-background-color: #f2b505;">
+         <children>
+            <GridPane layoutX="187.0" layoutY="71.0" style="-fx-background-color: #0496C7;">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="A" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="B" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="C" GridPane.columnIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="D" GridPane.columnIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="E" GridPane.columnIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="F" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="G" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="H" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="I" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="J" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="K" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="L" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="M" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="N" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="O" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="P" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="Q" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button maxWidth="45.0" mnemonicParsing="false" prefHeight="45.0" text="R" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="S" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="T" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="U" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="V" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="W" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="X" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="Y" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <TextField layoutX="187.0" layoutY="326.0" prefHeight="32.0" prefWidth="225.0" promptText="Your word here..." />
+            <Button layoutX="273.0" layoutY="374.0" mnemonicParsing="false" text="Submit" />
+            <Label fx:id="scoreLabel" layoutX="20.0" layoutY="20.0" style="-fx-background-color: #000000;" text="Score: 0" textFill="WHITE" />
+            <Button layoutX="433.0" layoutY="71.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="32.0" text="Shuffle" />
+            <Button layoutX="36.0" layoutY="330.0" mnemonicParsing="false" text="Timer" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>
