@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="324.0" styleClass="word_box" stylesheets="@../css/mainMenu.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.WordViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="377.0" styleClass="word_box" stylesheets="@../css/mainMenu.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.WordViewController">
    <children>
       <HBox prefHeight="47.0" prefWidth="275.0">
          <children>
-            <AnchorPane prefHeight="47.0" prefWidth="294.0">
+            <AnchorPane prefHeight="47.0" prefWidth="346.0">
                <children>
                   <HBox layoutX="6.0" layoutY="9.0" prefHeight="21.0" prefWidth="109.0">
                      <children>
@@ -25,7 +25,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label fx:id="word_speak" layoutX="194.0" layoutY="9.0" onMouseClicked="#clickSpeaker" prefHeight="28.0" prefWidth="29.0">
+                  <Label fx:id="word_speak" layoutX="201.0" layoutY="10.0" onMouseClicked="#clickSpeaker" prefHeight="28.0" prefWidth="29.0">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -34,7 +34,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label fx:id="word_delete" layoutX="223.0" layoutY="6.0" onMouseClicked="#clickDelete" prefHeight="35.0" prefWidth="29.0">
+                  <Label fx:id="word_delete" layoutX="247.0" layoutY="7.0" onMouseClicked="#clickDelete" prefHeight="35.0" prefWidth="29.0">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -43,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label fx:id="book_mark" layoutX="252.0" layoutY="-2.0" onMouseClicked="#clickBookMark" prefHeight="49.0" prefWidth="28.0">
+                  <Label fx:id="book_mark" layoutX="296.0" layoutY="-1.0" onMouseClicked="#clickBookMark" prefHeight="49.0" prefWidth="28.0">
                      <graphic>
                         <ImageView fx:id="my_fav" fitHeight="29.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,11 +52,11 @@
                         </ImageView>
                      </graphic>
                   </Label>
+                  <Separator layoutY="42.0" prefHeight="28.0" prefWidth="347.0" />
                </children>
             </AnchorPane>
          </children>
       </HBox>
-      <Separator prefWidth="200.0" />
-      <WebView fx:id="word_view_web_view" prefHeight="308.0" prefWidth="245.0" />
+      <WebView fx:id="word_view_web_view" prefHeight="359.0" prefWidth="347.0" />
    </children>
 </VBox>

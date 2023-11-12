@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GoogleTranslateController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GoogleTranslateController">
    <children>
-      <TextArea fx:id="sourceText" layoutX="45.0" layoutY="34.0" prefHeight="132.0" prefWidth="511.0" promptText="Please enter your sentence">
+      <TextArea fx:id="sourceText" layoutX="45.0" layoutY="34.0" prefHeight="147.0" prefWidth="568.0" promptText="Please enter your sentence">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
-      <TextArea fx:id="desText" layoutX="45.0" layoutY="263.0" prefHeight="132.0" prefWidth="511.0" promptText="Here is the result">
+      <TextArea fx:id="desText" layoutX="45.0" layoutY="313.0" prefHeight="147.0" prefWidth="568.0" promptText="Here is the result">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
-      <Button fx:id="btn_speak" layoutX="46.0" layoutY="185.0" mnemonicParsing="false" onAction="#speak" prefHeight="37.0" prefWidth="57.0">
+      <Button fx:id="btn_speak" layoutX="45.0" layoutY="213.0" mnemonicParsing="false" onAction="#speak" prefHeight="37.0" prefWidth="57.0">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +28,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btn_translate" layoutX="119.0" layoutY="185.0" mnemonicParsing="false" onAction="#translate" prefHeight="37.0" prefWidth="57.0">
+      <Button fx:id="btn_translate" layoutX="118.0" layoutY="213.0" mnemonicParsing="false" onAction="#translate" prefHeight="37.0" prefWidth="57.0">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,12 +36,12 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btn_swap" alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="187.0" mnemonicParsing="false" onAction="#swap" prefHeight="37.0" prefWidth="57.0" text="EN-VI">
+      <Button fx:id="btn_swap" alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="213.0" mnemonicParsing="false" onAction="#swap" prefHeight="37.0" prefWidth="57.0" text="EN-VI">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="279.0" layoutY="187.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="57.0">
+      <Button layoutX="280.0" layoutY="213.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="57.0">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -55,7 +55,7 @@
             <Font name="SansSerif Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="below_label" layoutX="45.0" layoutY="231.0" prefHeight="26.0" prefWidth="511.0" text="Vietnamse">
+      <Label fx:id="below_label" layoutX="45.0" layoutY="273.0" prefHeight="26.0" prefWidth="511.0" text="Vietnamse">
          <font>
             <Font name="SansSerif Bold" size="16.0" />
          </font>

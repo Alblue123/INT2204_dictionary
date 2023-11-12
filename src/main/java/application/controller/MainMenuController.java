@@ -1,6 +1,6 @@
 package application.controller;
 
-import application.Dictionary.OfflineDictionary;
+import application.Game.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

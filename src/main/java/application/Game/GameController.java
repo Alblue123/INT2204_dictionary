@@ -22,7 +22,7 @@ public abstract class GameController {
 
     @FXML
     private AnchorPane game_view;
-    private WordyGame wordyGame; 
+    private WordyGame wordyGame;
     private TextField wordInputField;
 
     public GameController() {
