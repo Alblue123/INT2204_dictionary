@@ -20,15 +20,13 @@ import org.apache.tika.language.detect.LanguageResult;
 
 import static application.MainApplication.dictionary;
 
-public class AddWordViewController implements Initializable {
+public class AddWordViewController extends ModifiedWordController implements Initializable {
     @FXML
     private TextField input_word;
     @FXML
     private Button btn_save;
     @FXML
     private HTMLEditor input_explain;
-    @FXML
-    private VBox msg_box;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,17 +54,11 @@ public class AddWordViewController implements Initializable {
                         "<html dir=\"ltr\"><head></head><body contenteditable=\"true\">", "");
         definition = definition.replace("</body></html>", "");
         if (!dictionary.insert(word, definition)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Lỗi");
-            alert.setContentText("Thêm từ không thành công!");
-            alert.show();
+            this.displayAlert("Add word failed!", "You can't add word that already exists!", false);
         } if(validate(word)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Lỗi");
-            alert.setContentText("Từ không hợp lệ!");
-            alert.show();
+            this.displayAlert("Add word failed!", "You can't add word that is Vietnamese!", false);
         }else {
-            System.out.println("Them thanh cong");
+            this.displayAlert("Word added successfully!", "Word has been added to dictionary!", true);
         }
     }
 

@@ -15,15 +15,13 @@ import java.util.ResourceBundle;
 
 import static application.MainApplication.dictionary;
 
-public class EditWordViewController implements Initializable {
+public class EditWordViewController extends ModifiedWordController implements Initializable {
     @FXML
     private TextField input_old_word;
     @FXML
     private Button btn_save;
     @FXML
     private HTMLEditor input_explain;
-    @FXML
-    private VBox msg_box;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,13 +38,13 @@ public class EditWordViewController implements Initializable {
         definition = definition.replace("</body></html>", "");
         definition = definition.replace("\"", "'");
         if (!dictionary.edit(word, definition)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Lỗi");
-            alert.setContentText("Sửa từ không thành công!");
-            alert.show();
+            this.displayAlert("Edit word failed!", "You can't edit word that doesn't exist!", false);
         } else {
-            System.out.println("Sua tu thanh cong");
+            this.displayAlert("Edit word succeeded!", "Word has been changed!", true);
         }
     }
+
+
+
 
 }

@@ -1,0 +1,22 @@
+.alert {
+    -fx-border-color: #e54646;
+    -fx-background-color: #ffcccb;;
+    -fx-text-fill: #004085;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-padding: 15px 15px 15px 15px;
+}
+
+.alertHeader {
+    -fx-text-fill: #004085;
+    -fx-font-family: sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+    -fx-padding: 0 0 10px 0;
+}
+
+.alertBody {
+    -fx-font-family: sans-serif;
+    -fx-text-fill: #004085;
+}

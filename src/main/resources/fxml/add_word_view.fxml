@@ -21,7 +21,7 @@
          </font></TextField>
       <HTMLEditor fx:id="input_explain" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;Explain it&lt;/body&gt;&lt;/html&gt;" layoutX="29.0" layoutY="110.0" prefHeight="250.0" prefWidth="591.0" />
       <VBox fx:id="msg_box" layoutX="29.0" layoutY="372.0" prefHeight="71.0" prefWidth="591.0" />
-      <Button fx:id="btn_save" layoutX="563.0" layoutY="451.0" mnemonicParsing="false" onAction="#save" text="SAVE">
+      <Button fx:id="btn_save" layoutX="563.0" layoutY="460.0" mnemonicParsing="false" onAction="#save" text="SAVE">
          <font>
             <Font name="SansSerif Bold" size="14.0" />
          </font></Button>
