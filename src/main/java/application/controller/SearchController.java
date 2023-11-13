@@ -73,5 +73,24 @@ public class SearchController extends MasterView {
         }
 
     }
+
+    @FXML
+    public void clickDefinition(MouseEvent e) {
+        if (e.getButton().equals(MouseButton.PRIMARY)) {
+            if (e.getClickCount() == 1 && search_list != null) {
+                findTarget();
+            }
+        }
+
+    }
+
+    @FXML
+    public void clickSynonyms(MouseEvent e) throws IOException {
+        if (e.getButton().equals(MouseButton.PRIMARY)) {
+            if (e.getClickCount() == 1 && search_list != null) {
+                loadSynonymsView(start_search.getText());
+            }
+        }
+    }
     
 }

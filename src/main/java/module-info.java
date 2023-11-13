@@ -8,6 +8,8 @@ module application {
     requires javafx.media;
     requires java.desktop;
     requires org.apache.tika.core;
+    requires org.json;
+    requires org.apache.commons.text;
 
     opens application.controller to javafx.fxml;
     exports application;

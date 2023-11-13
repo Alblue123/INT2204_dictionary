@@ -36,3 +36,26 @@
 .word_box {
     -fx-padding: 15px 15px 15px 15px;
 }
+
+.btn-selected {
+    -fx-background-color: #cce5ff;
+    -fx-text-fill: #004085;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.text {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: "SansSerif";
+}
+
+.btn-margin-wrap-content {
+    -fx-padding: 15;
+    -fx-border-insets: 5;
+    -fx-background-insets: 5;
+}
+
+.btn-margin-wrap-content:hover {
+    -fx-cursor: hand;
+}

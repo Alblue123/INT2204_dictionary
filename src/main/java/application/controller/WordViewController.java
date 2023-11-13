@@ -1,13 +1,22 @@
 package application.controller;
 
+import application.API.Synonym;
 import application.API.VoiceRSS;
 import application.backCode.Trie;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebView;
 import javafx.scene.input.MouseEvent;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.Objects;
 
@@ -16,8 +25,6 @@ import static application.MainApplication.dictionary;
 public class WordViewController extends MasterView {
     @FXML
     private WebView word_view_web_view;
-    @FXML
-    private Label view_word_word;
     @FXML
     private Label book_mark;
     @FXML
@@ -44,7 +51,6 @@ public class WordViewController extends MasterView {
                 e.printStackTrace();
             }
         }
-
     }
 
     @FXML
@@ -91,5 +97,7 @@ public class WordViewController extends MasterView {
             }
         }
     }
+
+
 
 }

@@ -5,10 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -21,6 +18,7 @@ import javafx.scene.web.WebView;
 import javafx.util.Callback;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -35,7 +33,11 @@ public class MasterView implements Initializable {
     @FXML
     protected WordViewController wordViewController;
     @FXML
+    protected SynonymController synonymsController;
+    @FXML
     protected AnchorPane search_view;
+    @FXML
+    protected Label view_word_word;
 
 
 
@@ -71,6 +73,28 @@ public class MasterView implements Initializable {
             wordViewController.init(target, explain);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    protected void loadSynonymsView(String target) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/fxml/synonyms.fxml"));
+        ScrollPane scrollPane = fxmlLoader.load();
+        if (scrollPane != null) {
+            VBox vBox = (VBox) scrollPane.getContent();
+            if (vBox != null) {
+                search_view.getChildren().add(scrollPane);
+                synonymsController = fxmlLoader.getController();
+                if (synonymsController != null) {
+                    synonymsController.init(target);
+                } else {
+                    System.out.println("synonymsController is null");
+                }
+            } else {
+                System.out.println("vBox is null");
+            }
+        } else {
+            System.out.println("scrollPane is null");
         }
     }
 
