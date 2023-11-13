@@ -7,6 +7,8 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -24,11 +26,16 @@ public class WordyGame {
     private List<String> submittedWords = new ArrayList<>();
     private TextField wordInputField; 
     private StringBuilder clickedCharacters = new StringBuilder();
+    @FXML
     private GridPane gameBoardGrid;
-    private GameController gameController;
+    private GameManager gameManager;
 
-    public WordyGame(GameController gameController) {
-        this.gameController = gameController;
+    public WordyGame() {
+        // No-argument constructor
+    }
+
+    public WordyGame(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 
     public WordyGame(int rows, int cols) {
@@ -172,7 +179,7 @@ public class WordyGame {
             }
         }
         
-        gameController.updateScoreLabel(score);
+        gameManager.updateScoreLabel(score);
 
         return finalScore;
     }

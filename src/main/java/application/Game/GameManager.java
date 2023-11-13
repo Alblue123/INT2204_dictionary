@@ -1,7 +1,11 @@
 package application.Game;
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
@@ -18,31 +22,33 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 
-public abstract class GameController {
+public class GameManager extends Application {
 
     @FXML
     private AnchorPane game_view;
-    private WordyGame wordyGame; 
-  
+    private WordyGame wordyGame;
 
-    public GameController() {
-        wordyGame = new WordyGame(5, 5); 
+    public GameManager()  {
+        wordyGame = new WordyGame(5, 5);
+    }
+    public static void main(String[] args) {
+        launch(args);
     }
 
-    public void playButtonClicked(ActionEvent event) {
+    @Override
+    public void start(Stage primaryStage) {
         try {
             // Load the playing view FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/playing_view.fxml"));
-            AnchorPane playingView = loader.load();
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/playing_view.fxml"));
 
             // Create a new scene with the playing view
-            Scene playingScene = new Scene(playingView);
-
-            // Get the stage from the event source
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
 
             // Set the scene to the stage
-            stage.setScene(playingScene);
+            primaryStage.setScene(scene);
+
+            // Show the stage
+            primaryStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,7 +63,7 @@ public abstract class GameController {
 
     
     /** load game view. */
-    public void loadWordView() {
+    public void loadGameView() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/playing_view.fxml"));

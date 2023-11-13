@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="application.controller.AlertController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox prefWidth="304.0" styleClass="alert"  xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AlertController">
+    <children>
+        <Label fx:id="alertHeader" prefWidth="274.0" styleClass="alertHeading" text="Create Alert!" />
+        <Label fx:id="alertBody" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" prefWidth="274.0" styleClass="alert_content"  text="Create a new alert." wrapText="true" />
+    </children>
+</VBox>

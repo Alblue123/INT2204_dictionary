@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="658.0" style="-fx-background-color: #3399CC;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
    <children>
-      <Button layoutX="271.0" layoutY="165.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="128.0" styleClass="btn_game" stylesheets="@../css/mainMenu.css" text="PLAY">
+      <Button fx:id="btn_play" layoutX="271.0" layoutY="165.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="128.0" styleClass="btn_game" stylesheets="@../css/mainMenu.css" text="PLAY">
          <font>
             <Font name="SansSerif Bold" size="24.0" />
          </font>

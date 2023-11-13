@@ -1,6 +1,6 @@
 package application.controller;
 
-import application.Game.GameController;
+import application.Game.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,6 +27,7 @@ public class MainMenuController implements Initializable {
     private AddWordViewController addWordViewController;
     private EditWordViewController editWordViewController;
     private GoogleTranslateController googleTranslateController;
+    private GameController gameManager;
     private WordListController wordListController;
     private AnchorPane gg_translate_pane;
     private AnchorPane wordlist_pane;
