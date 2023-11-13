@@ -1,6 +1,5 @@
 package Game;
 
-import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,13 +17,11 @@ public class WordyGame {
     private char[][] board;
     private int rows;
     private int cols;
-    private Random random = new Random();
     private Set<String> validWords = new HashSet<>(); // A set of valid words from a dictionary.
     private int score = 0;
     private Timer timer;
     private int elapsedTime;
     private List<String> submittedWords = new ArrayList<>();
-    private boolean gameInProgress = false;
     private TextField wordInputField; 
     private StringBuilder clickedCharacters = new StringBuilder();
     private GridPane gameBoardGrid;
@@ -204,7 +201,7 @@ public class WordyGame {
         submittedWords.clear();
         resetTimer();
         initializeBoard(gameBoardGrid);
-        gameInProgress = false;
+
         
     }
     public void startTimer() {
