@@ -8,7 +8,7 @@ import java.io.IOException;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -22,8 +22,8 @@ public abstract class GameController {
 
     @FXML
     private AnchorPane game_view;
-    private WordyGame wordyGame;
-    private TextField wordInputField;
+    private WordyGame wordyGame; 
+  
 
     public GameController() {
         wordyGame = new WordyGame(5, 5); 
@@ -53,7 +53,7 @@ public abstract class GameController {
         return gameBoardGrid;
     }
 
-    private StringBuilder clickedCharacters = new StringBuilder();
+    
 
     
     /** load game view. */
@@ -106,10 +106,6 @@ public abstract class GameController {
         System.out.println("Error: Invalid word. Please enter a valid word.");
     }
 
-    private void displayDuplicateWordError() {
-        
-        System.out.println("Error: Word already submitted. Choose a different word.");
-    }
 
     @FXML
     private Label scoreLabel; 
