@@ -73,24 +73,7 @@ public class GameController implements Initializable {
     protected Timeline timeline;
     
 
-    @FXML
-    protected void initialize() {
-        // Load dictionary when the controller is initialized
-        loadDictionaryAsync();
-    }
-    protected void loadDictionaryAsync() {
-        CompletableFuture<List<String>> futureWords = wordFetcher.fetchWordsAsync();
 
-        futureWords.thenAccept(words -> {
-            // Handle the loaded words, e.g., update your dictionary Set
-            dictionary.addAll(words);
-            System.out.println("Dictionary loaded: " + dictionary);
-        }).exceptionally(ex -> {
-            // Handle exceptions if the word fetching fails
-            ex.printStackTrace();
-            return null;
-        });
-    }
     String randomAlphabet = getRandomLetter();
     protected String getRandomLetter() {
         Random random = new Random();
@@ -126,40 +109,34 @@ public class GameController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-private void handleInfoButton(ActionEvent event) {
-    // Create a dialog
-    Dialog<String> dialog = new Dialog<>();
-    dialog.setTitle("Game Information");
-    dialog.setHeaderText("This is an awesome game! Here's some information about it.");
+        @FXML
+    protected void handleInfoButton(ActionEvent event) {
+        try {
+            // Load the playing view FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/gameinfo_view.fxml"));
+            
+            Parent root = loader.load();
 
-    // Set the icon (optional)
-    Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
-    stage.getIcons().add(new Image("/img/fav_icon.png")); // Replace with the path to your icon
+            GameController controller = loader.getController();
 
-    // Set the content of the dialog (you can customize this)
-    TextArea textArea = new TextArea("Put your game information here.");
-    textArea.setEditable(false);
-    textArea.setWrapText(true);
-    dialog.getDialogPane().setContent(textArea);
 
-    // Add buttons to the dialog (you can customize these)
-    ButtonType closeButton = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
-    dialog.getDialogPane().getButtonTypes().add(closeButton);
+            // Create a new scene with the playing view
+            Scene scene = new Scene(root);
 
-    // Handle the close button action
-    dialog.setResultConverter(buttonType -> {
-        if (buttonType == closeButton) {
-            // Handle close action if needed
+            // Get the stage from the event source
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Set the scene to the stage
+            stage.setScene(scene);
+
+            // Show the stage
+            stage.show();
+
+           
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return null;
-    });
-
-    // Show the dialog
-    dialog.showAndWait();
-}
-
-
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

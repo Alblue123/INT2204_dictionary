@@ -9,6 +9,10 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="658.0" style="-fx-background-color: #a88951;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
    <children>
       <Button alignment="CENTER" layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="53.0" prefWidth="61.0" text="Exit" />
-      <ImageView fitHeight="424.0" fitWidth="658.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="408.0" fitWidth="580.0" layoutX="39.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/infogame.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
