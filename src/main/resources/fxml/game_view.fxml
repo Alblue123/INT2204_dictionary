@@ -11,7 +11,7 @@
             <Font name="SansSerif Bold" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="271.0" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="128.0" styleClass="btn_game" stylesheets="@../css/mainMenu.css" text="INFO">
+      <Button fx:id="infoButton" layoutX="271.0" layoutY="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="128.0" styleClass="btn_game" stylesheets="@../css/mainMenu.css" text="INFO" onAction="#handleInfoButton"  >
          <font>
             <Font name="SansSerif Bold" size="24.0" />
          </font>

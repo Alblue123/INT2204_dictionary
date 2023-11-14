@@ -1,5 +1,11 @@
 package application.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.Optional;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -10,13 +16,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.scene.Parent;
@@ -30,6 +42,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+
 import application.Game.Scorer;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
@@ -38,33 +52,54 @@ import javafx.util.Duration;
 
 
 public class GameController implements Initializable {
-    private boolean gameStarted = false;
-    private Scorer scorer = new Scorer(); 
-    private int currentScore = 0;  
-    private List<Button> buttonsToUpdate;
-    private Set<String> dictionary = new HashSet<>();
-    private StringBuilder currentWord = new StringBuilder();
+    protected boolean gameStarted = false;
+    protected WordFetcher wordFetcher = new WordFetcher();
+    protected Scorer scorer = new Scorer(); 
+    protected int currentScore = 0;  
+    protected List<Button> buttonsToUpdate;
+    protected Set<String> dictionary = new HashSet<>();
+    protected StringBuilder currentWord = new StringBuilder();
+    protected List<String> submittedWordsList = new ArrayList<>();
+    protected boolean isButtonClicked = false;
+    @FXML
+    protected GridPane gridPane; 
+    @FXML
+    protected Label scoreLabel;
+    @FXML
+    protected TextField wordTextField;
+    @FXML
+    protected Label timerLabel;
+    protected int timeSeconds = 60; // Initial countdown time in seconds
+    protected Timeline timeline;
+    
 
     @FXML
-    private GridPane gridPane; 
-    @FXML
-    private Label scoreLabel;
-    @FXML
-    private TextField wordTextField;
-    @FXML
-    private Label timerLabel;
-    private int timeSeconds = 60; // Initial countdown time in seconds
-    private Timeline timeline;
-    
+    protected void initialize() {
+        // Load dictionary when the controller is initialized
+        loadDictionaryAsync();
+    }
+    protected void loadDictionaryAsync() {
+        CompletableFuture<List<String>> futureWords = wordFetcher.fetchWordsAsync();
+
+        futureWords.thenAccept(words -> {
+            // Handle the loaded words, e.g., update your dictionary Set
+            dictionary.addAll(words);
+            System.out.println("Dictionary loaded: " + dictionary);
+        }).exceptionally(ex -> {
+            // Handle exceptions if the word fetching fails
+            ex.printStackTrace();
+            return null;
+        });
+    }
     String randomAlphabet = getRandomLetter();
-    private String getRandomLetter() {
+    protected String getRandomLetter() {
         Random random = new Random();
         char randomChar = (char) (random.nextInt(26) + 'A');
         return String.valueOf(randomChar);
     }
     
     @FXML
-    private void handlePlayButton(ActionEvent event) {
+    protected void handlePlayButton(ActionEvent event) {
         try {
             // Load the playing view FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/player_view.fxml"));
@@ -91,13 +126,47 @@ public class GameController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+private void handleInfoButton(ActionEvent event) {
+    // Create a dialog
+    Dialog<String> dialog = new Dialog<>();
+    dialog.setTitle("Game Information");
+    dialog.setHeaderText("This is an awesome game! Here's some information about it.");
+
+    // Set the icon (optional)
+    Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+    stage.getIcons().add(new Image("/img/fav_icon.png")); // Replace with the path to your icon
+
+    // Set the content of the dialog (you can customize this)
+    TextArea textArea = new TextArea("Put your game information here.");
+    textArea.setEditable(false);
+    textArea.setWrapText(true);
+    dialog.getDialogPane().setContent(textArea);
+
+    // Add buttons to the dialog (you can customize these)
+    ButtonType closeButton = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
+    dialog.getDialogPane().getButtonTypes().add(closeButton);
+
+    // Handle the close button action
+    dialog.setResultConverter(buttonType -> {
+        if (buttonType == closeButton) {
+            // Handle close action if needed
+        }
+        return null;
+    });
+
+    // Show the dialog
+    dialog.showAndWait();
+}
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        
     }
 
-    private void populateButtonsToUpdate() {
+    protected void populateButtonsToUpdate() {
     buttonsToUpdate = gridPane.getChildren().stream()
             .filter(node -> node instanceof Button)
             .map(node -> (Button) node)
@@ -108,9 +177,10 @@ public class GameController implements Initializable {
 }
 
     @FXML
-private void handleStartGameButton(ActionEvent event) {
+protected void handleStartGameButton(ActionEvent event) {
     currentScore = 0;
     timeSeconds = 60; 
+    submittedWordsList.clear();
     timerLabel.setText(String.valueOf(timeSeconds));
     // Stop the previous timeline if it exists
      if (timeline != null) {
@@ -123,7 +193,7 @@ private void handleStartGameButton(ActionEvent event) {
         System.out.println("Shuffling buttons");
         shuffleButtonsInGridPane();
         changeButtonColors("#d49c44");
-
+        enableAllButtons();
         
     } else {
         System.out.println("Error: buttonsToUpdate is null or empty");
@@ -131,10 +201,11 @@ private void handleStartGameButton(ActionEvent event) {
     currentWord.setLength(0);
 
     wordTextField.setText(currentWord.toString());
+    
     updateScoreLabel();
 }
 
- private void startCountdown() {
+ protected void startCountdown() {
         timerLabel.setText(String.valueOf(timeSeconds)); // Set initial time on the label
 
         // Create a timeline for the countdown
@@ -159,7 +230,7 @@ private void handleStartGameButton(ActionEvent event) {
         timeline.playFromStart(); // Start the countdown
     }
 
-    private void showTimeUpAlert() {
+    protected void showTimeUpAlert() {
     // Create a time-up alert
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Time's Up!");
@@ -179,14 +250,11 @@ private void handleStartGameButton(ActionEvent event) {
     // Show the alert and wait for the OK button to be pressed
     Optional<ButtonType> result = alert.showAndWait();
 }
-    private void handleAlertClose() {
-        // Implement the logic to handle the alert close event
-        // For example, you can navigate back to the main menu or perform other actions
-        System.out.println("Alert closed. Returning to the main menu...");
-    }
+
+    
 
 
-private void shuffleButtonsInGridPane() {
+protected void shuffleButtonsInGridPane() {
     // Shuffle the list of buttonsToUpdate
     List<Button> shuffledButtons = new ArrayList<>(buttonsToUpdate);
     Collections.shuffle(shuffledButtons);
@@ -207,56 +275,29 @@ public GridPane getGridPane() {
     return gridPane;
 }
 
-    @FXML
-    private void initialize() {
-        // Load dictionary when the controller is initialized
-        loadDictionary();
-    }
 
-    private void loadDictionary() {
-        try {
-            // Load dictionary words from dictionary.txt
-            InputStream inputStream = getClass().getResourceAsStream("/Data/diction1.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-    
-            // Convert Set to List
-            List<String> dictionaryList = new ArrayList<>(dictionary);
-    
-            while ((line = reader.readLine()) != null) {
-                dictionaryList.add(line.trim().toLowerCase());
-            }
-    
-            // Update the Set with the new elements
-            dictionary.addAll(dictionaryList);
-    
-            // Print the first 10 words in the dictionary for debugging
-            System.out.println("Dictionary content: " + dictionaryList.subList(0, Math.min(dictionaryList.size(), 10)));
-    
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
     
+protected Button clickedButton;
 
 @FXML
-private void handleButtonClick(ActionEvent event) {
-    if (gameStarted && event.getSource() instanceof Button) {
-        Button clickedButton = (Button) event.getSource();
+protected void handleButtonClick(ActionEvent event) {
+    if (gameStarted && timeSeconds > 0 && event.getSource() instanceof Button) {
+        clickedButton = (Button) event.getSource();
         String buttonText = clickedButton.getText();
 
         // Append the letter to the current word
         currentWord.append(buttonText);
-
+        clickedButton.setDisable(true);
         // Update the TextField with the accumulated word
         wordTextField.setText(currentWord.toString());
 
         toggleClickedEffect(clickedButton);
+        
     }
 }
 
-private void toggleClickedEffect(Button button) {
+protected void toggleClickedEffect(Button button) {
     // Check if the button currently has the clicked effect
     String currentStyle = button.getStyle();
     String clickedStyle = "-fx-background-color: #a67b3a;";
@@ -269,50 +310,74 @@ private void toggleClickedEffect(Button button) {
         button.setStyle(clickedStyle);
     }
 }
+
 @FXML
-private void handleSubmitButton(ActionEvent event) {
-    if (gameStarted) {
+protected void handleSubmitButton(ActionEvent event) {
+    if (gameStarted && timeSeconds > 0 ) {
         String submittedWord = wordTextField.getText().trim().toLowerCase();
         int wordScore = scorer.calculateScore(submittedWord);
 
-        if (dictionary.contains(submittedWord)) {
+        List<String> validWords = ValidWordsProvider.getValidWords();  
+
+        if (submittedWordsList.contains(submittedWord)) {
+            // Handle the case where the word is a duplicate
+            System.out.println("Duplicate word: " + submittedWord);
+            System.out.println("Current Score: " + currentScore);
+            changeButtonColors("#d49c44");
+            updateScoreLabel();
+            enableAllButtons();
+        } else if (validWords.contains(submittedWord)) {
             // Word is in the dictionary
             System.out.println("Valid word: " + submittedWord);
             // Update the current score
             currentScore += wordScore;
             System.out.println("Current Score: " + currentScore);
-           
-           changeButtonColors("#d49c44");
-           shuffleButtonsInGridPane();
-         
-           updateScoreLabel();
 
+            changeButtonTextOfClickedButton();
+            // Add the submitted word to the list
+            submittedWordsList.add(submittedWord);
+           
+            changeButtonColors("#d49c44");
+            shuffleButtonsInGridPane();
+            updateScoreLabel();
+            enableAllButtons();
         } else {
             // Word is not in the dictionary
-            
             System.out.println("Invalid word: " + submittedWord);
-            currentScore += wordScore;
             System.out.println("Current Score: " + currentScore);
-            
-
             changeButtonColors("#d49c44");
-
-         
             updateScoreLabel();
-
+            enableAllButtons();
             wordTextField.clear();
         }
 
         currentWord.setLength(0);
         wordTextField.setText(currentWord.toString());
+        isButtonClicked = false;
     }
 }
-private void changeButtonColors(String color) {
+
+protected void changeButtonTextOfClickedButton() {
+    if (clickedButton != null) {
+        // Get a random alphabet character
+        String randomAlphabet = getRandomLetter();
+
+        // Change the text of the clicked button
+        clickedButton.setText(randomAlphabet);
+    }
+}
+
+protected void enableAllButtons() {
+    for (Button button : buttonsToUpdate) {
+        button.setDisable(false);
+    }
+}
+protected void changeButtonColors(String color) {
     for (Button button : buttonsToUpdate) {
         button.setStyle("-fx-background-color: " + color + ";");
     }
 }
-private void updateScoreLabel() {
+protected void updateScoreLabel() {
     if (scoreLabel != null) {
         scoreLabel.setText("Score: " + currentScore);
     }
@@ -325,7 +390,7 @@ public int getCurrentScore() {
 }
 
     @FXML
-    private void handleExitButton(ActionEvent event) {
+    protected void handleExitButton(ActionEvent event) {
         try {
             // Load the main menu view FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainMenu.fxml"));

@@ -25,51 +25,51 @@
          <children>
             <Button fx:id="button1" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="A">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="18.0" />
                </font></Button>
             <Button fx:id="button2" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="B" GridPane.columnIndex="1">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="18.0" />
                </font></Button>
             <Button fx:id="button3" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="C" GridPane.columnIndex="2">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button4" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="D" GridPane.columnIndex="3">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button5" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="E" GridPane.columnIndex="4">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button6" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="F" GridPane.rowIndex="1">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button7" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="G" GridPane.columnIndex="1" GridPane.rowIndex="1">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button8" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="H" GridPane.columnIndex="2" GridPane.rowIndex="1">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button9" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="I" GridPane.columnIndex="3" GridPane.rowIndex="1">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button10" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="J" GridPane.columnIndex="4" GridPane.rowIndex="1">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button11" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="K" GridPane.rowIndex="2">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button12" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="L" GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button13" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="M" GridPane.columnIndex="2" GridPane.rowIndex="2">
                 <font>
@@ -77,31 +77,31 @@
                 </font></Button>
             <Button fx:id="button14" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="N" GridPane.columnIndex="3" GridPane.rowIndex="2">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button15" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="O" GridPane.columnIndex="4" GridPane.rowIndex="2">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button16" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="P" GridPane.rowIndex="3">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button17" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="Q" GridPane.columnIndex="1" GridPane.rowIndex="3">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button18" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="R" GridPane.columnIndex="2" GridPane.rowIndex="3">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button19" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="S" GridPane.columnIndex="3" GridPane.rowIndex="3">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button20" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="T" GridPane.columnIndex="4" GridPane.rowIndex="3">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button21" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="W" GridPane.rowIndex="4">
                 <font>
@@ -109,19 +109,19 @@
                 </font></Button>
             <Button fx:id="button22" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="U" GridPane.columnIndex="1" GridPane.rowIndex="4">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button23" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="V" GridPane.columnIndex="2" GridPane.rowIndex="4">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button24" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="X" GridPane.columnIndex="3" GridPane.rowIndex="4">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
             <Button fx:id="button25" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #d49c44;" text="Y" GridPane.columnIndex="4" GridPane.rowIndex="4">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font></Button>
          </children>
       </GridPane>

@@ -2,31 +2,40 @@ package application.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
-import java.net.URL;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
+public class PlayerController extends GameController {
 
-public class PlayerController implements Initializable {
+    @FXML
+    protected void handlePlayButton(ActionEvent event) {
+        try {
+            // Load the playing view FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/player_view.fxml"));
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-       
+            Parent root = loader.load();
+
+            GameUIController controller = loader.getController();
+
+            // Create a new scene with the playing view
+            Scene scene = new Scene(root);
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Set the scene to the stage
+            stage.setScene(scene);
+
+            // Show the stage
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
