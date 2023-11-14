@@ -36,16 +36,16 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btn_swap" alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="213.0" mnemonicParsing="false" onAction="#swap" prefHeight="37.0" prefWidth="57.0" text="EN-VI">
+      <Button fx:id="btn_swap" alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="213.0" mnemonicParsing="false" onAction="#swap" prefHeight="40.0" prefWidth="57.0" text="EN-VI">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="280.0" layoutY="213.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="57.0">
+      <Button fx:id="btn_copy" layoutX="280.0" layoutY="213.0" mnemonicParsing="false" onAction="#copy" prefHeight="40.0" prefWidth="57.0">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/question.png" />
+                  <Image url="@../img/copy_icon.png" />
                </image>
             </ImageView>
          </graphic>
@@ -60,5 +60,14 @@
             <Font name="SansSerif Bold" size="16.0" />
          </font>
       </Label>
+      <Button layoutX="361.0" layoutY="213.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="57.0">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/question.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -44,7 +44,12 @@ public class SynonymController extends MasterView {
         JSONArray wordlist = list.getJSONArray(type);
 
         // If the JSONArray is empty, exit the method
-        if (wordlist.length() < 1) return;
+        if (wordlist.length() < 1) {
+            Label label = new Label("Doesn't have " + type);
+            label.getStyleClass().add("text");
+            synBox.getChildren().add(label);
+            return;
+        }
 
         // Create a new TextFlow
         TextFlow wordlistBox = new TextFlow();

@@ -12,6 +12,8 @@ import javafx.scene.control.ButtonType;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.stage.Stage;
 
 public class MainApplication extends Application {
@@ -25,6 +27,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
+        stage.setResizable(false);
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainMenu.fxml"));
             Scene scene = new Scene(root);

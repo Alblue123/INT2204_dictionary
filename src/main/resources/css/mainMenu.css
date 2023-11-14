@@ -7,6 +7,22 @@
     -fx-background-color: rgba(0, 0, 0, .20);
 }
 
+.btn_main {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0;
+}
+
+.btn_main:hover {
+    -fx-background-color: rgba(255, 255, 255, .20);
+}
+
+.btn_mod {
+    -fx-background-color: #6462FC;
+    -fx-border-radius: 10;
+    -fx-text-fill: white;
+    -fx-padding: 5;
+}
+
 .btn_game {
     -fx-background-color: #CCCC00;
     -fx-background-radius: 25px;

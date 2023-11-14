@@ -81,7 +81,6 @@ public class SearchController extends MasterView {
                 findTarget();
             }
         }
-
     }
 
     @FXML

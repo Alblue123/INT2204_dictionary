@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -53,6 +55,13 @@ public class GoogleTranslateController implements Initializable {
         } else {
             VoiceRSS.speakWords(source, "Nancy", "en-gb");
         }
+    }
+
+    public void copy() {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(desText.getText());
+        clipboard.setContent(content);
     }
 
     @Override

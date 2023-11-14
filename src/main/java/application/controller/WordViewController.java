@@ -2,6 +2,7 @@ package application.controller;
 
 import application.API.Synonym;
 import application.API.VoiceRSS;
+import application.backCode.Bookmark;
 import application.backCode.Trie;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -77,11 +78,13 @@ public class WordViewController extends MasterView {
     public void handleAddBookMark() {
         String word = view_word_word.getText();
         dictionary.updateFavorite(word, true);
+        Bookmark.addToFile(word);
     }
 
     public void handleRemoveBookMark() {
         String word = view_word_word.getText();
         dictionary.updateFavorite(word, false);
+        Bookmark.deleteWord(word);
     }
 
     @FXML

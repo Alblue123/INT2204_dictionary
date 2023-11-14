@@ -25,25 +25,6 @@ import java.util.*;
 import static application.MainApplication.dictionary;
 
 public class WordListController extends MasterView implements Initializable {
-
-    /** jump to export view. */
-    /*public void export(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/export.fxml"));
-            Parent root = loader.load();
-
-            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Stage secondaryStage = new Stage();
-            Scene scene = new Scene(root);
-            secondaryStage.setScene(scene);
-            secondaryStage.initOwner(primaryStage);
-            secondaryStage.initModality(Modality.APPLICATION_MODAL);
-            secondaryStage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
     @FXML
     public void findTarget() {
         String target = start_search.getText();

@@ -186,22 +186,41 @@ public class OnlineDictionary extends Dictionary {
 
     @Override
     public void delete(String wordTarget) {
-        final String query = "DELETE FROM dict WHERE word = ?";
-        PreparedStatement ps = null;
+        // Backup the data
+        String backupQuery = "INSERT INTO backup SELECT * FROM dict WHERE word = ?";
+        PreparedStatement backupPs = null;
         try {
-            ps = connection.prepareStatement(query);
-            ps.setString(1, wordTarget);
-            ps.executeUpdate();
+            backupPs = connection.prepareStatement(backupQuery);
+            backupPs.setString(1, wordTarget);
+            backupPs.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             try {
-                if (ps != null) ps.close();
+                if (backupPs != null) backupPs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Delete the data
+        final String deleteQuery = "DELETE FROM dict WHERE word = ?";
+        PreparedStatement deletePs = null;
+        try {
+            deletePs = connection.prepareStatement(deleteQuery);
+            deletePs.setString(1, wordTarget);
+            deletePs.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (deletePs != null) deletePs.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
+
 
     @Override
     public ArrayList<String> getTargetWords() {
