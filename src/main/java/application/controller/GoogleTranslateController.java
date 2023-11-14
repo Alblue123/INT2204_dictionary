@@ -27,13 +27,31 @@ public class GoogleTranslateController implements Initializable {
     private boolean isVietnamese = false;
 
     public void translate() {
-        String source = sourceText.getText();
-        if (isVietnamese) {
-            desText.setText(Translator.viToEn(source));
-        } else {
-            desText.setText(Translator.enToVi(source));
-        }
+        new Thread(() -> {
+            String source = sourceText.getText();
+            if (isVietnamese) {
+                desText.setText(Translator.viToEn(source));
+            } else {
+                desText.setText(Translator.enToVi(source));
+            }
+        }).start();
     }
+
+    public void speak() {
+        new Thread(() -> {
+            try {
+                String source = sourceText.getText();
+                if (isVietnamese) {
+                    VoiceRSS.speakWords(source, "Chi", "vi-vn");
+                } else {
+                    VoiceRSS.speakWords(source, "Nancy", "en-gb");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
 
     public void swap() {
         isVietnamese = !isVietnamese;
@@ -46,15 +64,6 @@ public class GoogleTranslateController implements Initializable {
         }
         sourceText.clear();
         desText.clear();
-    }
-
-    public void speak() throws Exception {
-        String source = sourceText.getText();
-        if (isVietnamese) {
-            VoiceRSS.speakWords(source, "Chi", "vi-vn");
-        } else {
-            VoiceRSS.speakWords(source, "Nancy", "en-gb");
-        }
     }
 
     public void copy() {

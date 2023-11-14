@@ -45,9 +45,4 @@ public class Synonym {
             return new JSONObject("{\"synonyms\":[],\"antonyms\":[]}");
         }
     }
-
-
-    public static void main(String[] args) throws IOException {
-        System.out.println(getSynonym("sleep"));
-    }
 }
