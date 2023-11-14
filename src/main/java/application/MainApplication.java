@@ -2,6 +2,7 @@ package application;
 
 import application.Dictionary.OnlineDictionary;
 import application.backCode.Dictionary;
+import application.backCode.History;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,8 @@ import javafx.stage.Stage;
 public class MainApplication extends Application {
     public static Dictionary dictionary;
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        History.loadHistory();
         launch(args);
     }
 

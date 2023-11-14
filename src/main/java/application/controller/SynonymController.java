@@ -22,10 +22,8 @@ public class SynonymController extends MasterView {
             Platform.runLater(() -> {
                 synBox.getChildren().clear();
                 Label synonymsLabel = new Label("synonyms");
-                synonymsLabel.getStyleClass().add("text");
                 fetchData(list, "synonyms");
                 Label antonymsLabel = new Label("antonyms");
-                antonymsLabel.getStyleClass().add("text");
                 fetchData(list, "antonyms");
             });
         });
@@ -34,7 +32,6 @@ public class SynonymController extends MasterView {
         synBox.getChildren().clear();
 
         Label loadingLabel = new Label("Loading data...");
-        loadingLabel.getStyleClass().add("text");
         synBox.getChildren().add(loadingLabel);
     }
 
@@ -46,7 +43,7 @@ public class SynonymController extends MasterView {
         // If the JSONArray is empty, exit the method
         if (wordlist.length() < 1) {
             Label label = new Label("Doesn't have " + type);
-            label.getStyleClass().add("text");
+            //label.getStyleClass().add("heading");
             synBox.getChildren().add(label);
             return;
         }

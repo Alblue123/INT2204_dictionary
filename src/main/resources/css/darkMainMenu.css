@@ -1,0 +1,81 @@
+.btn {
+    -fx-background-color: none;
+    -fx-background-radius: 0;
+}
+
+.btn:hover {
+    -fx-background-color: rgba(0, 0, 0, .20);
+}
+
+.btn_main {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0;
+}
+
+.btn_main:hover {
+    -fx-background-color: rgba(255, 255, 255, .20);
+}
+
+.btn_mod {
+    -fx-background-color: #6462FC;
+    -fx-border-radius: 10;
+    -fx-text-fill: white;
+    -fx-padding: 5;
+}
+
+.btn_game {
+    -fx-background-color: #CCCC00;
+    -fx-background-radius: 25px;
+}
+
+.btn_game:hover {
+    -fx-background-color: rgba(204, 204, 0, .20);
+}
+
+.view {
+    -fx-background-color: #16161f;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0, 0, 0);
+}
+
+.search_bar {
+    -fx-border-color: #e5e9ec;
+    -fx-background-color: none;
+    -fx-border-radius: 10px;
+}
+
+.list {
+    -fx-border-color: #e5e9ec;
+    -fx-background-color: none;
+    -fx-border-radius: 10px;
+}
+
+.word_box {
+    -fx-padding: 15px 15px 15px 15px;
+}
+
+.btn-selected {
+    -fx-background-color: #cce5ff;
+    -fx-text-fill: #004085;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.text {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: "SansSerif";
+}
+
+.btn-margin-wrap-content {
+    -fx-padding: 15;
+    -fx-border-insets: 5;
+    -fx-background-insets: 5;
+}
+
+.btn-margin-wrap-content:hover {
+    -fx-cursor: hand;
+}
+
+#anchorPane {
+    -fx-background-color: #16161f;
+}

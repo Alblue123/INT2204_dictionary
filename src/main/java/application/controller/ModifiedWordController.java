@@ -44,12 +44,13 @@ public class ModifiedWordController {
         msg_box.getChildren().add(0, alertBox);
 
         if (state) {
-            alertBox.setStyle("-fx-background-color: #cce5ff;" +
-                    " -fx-border-color: #b8daff");
-            alertBox.setStyle("-fx-text-fill: #004085");
+            alertBox.getStylesheets().add(
+                    getClass().getResource("/css/alert.css")
+                            .toExternalForm());
         } else {
-            alertBox.setStyle("-fx-background-color: #ffcccb;" +
-                    " -fx-border-color: #e54646");
+            alertBox.getStylesheets().add(
+                    getClass().getResource("/css/alertFailed.css")
+                            .toExternalForm());
         }
 
         if (autoClose) {

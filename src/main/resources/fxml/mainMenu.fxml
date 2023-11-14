@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="560.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
    <children>
       <AnchorPane minHeight="60.0" minWidth="600.0" prefHeight="60.0" prefWidth="780.0" style="-fx-background-color: #084484;">
@@ -55,7 +54,7 @@
             </Button>
             <Button fx:id="btn_light" layoutY="186.0" mnemonicParsing="false" onAction="#onClick" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="my_light" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/grey_sun_icon.png" />
                      </image>

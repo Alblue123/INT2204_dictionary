@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
 public class GoogleTranslateController implements Initializable {
@@ -28,11 +29,16 @@ public class GoogleTranslateController implements Initializable {
 
     public void translate() {
         new Thread(() -> {
-            String source = sourceText.getText();
-            if (isVietnamese) {
-                desText.setText(Translator.viToEn(source));
-            } else {
-                desText.setText(Translator.enToVi(source));
+            try {
+                String source = sourceText.getText();
+                if (isVietnamese) {
+                    desText.setText(Translator.viToEn(source));
+                } else {
+                    desText.setText(Translator.enToVi(source));
+                }
+            } catch (Exception e) {
+                System.out.println("Connection lost during translation.");
+                e.printStackTrace();
             }
         }).start();
     }
@@ -47,10 +53,12 @@ public class GoogleTranslateController implements Initializable {
                     VoiceRSS.speakWords(source, "Nancy", "en-gb");
                 }
             } catch (Exception e) {
+                System.out.println("Connection lost during speech.");
                 e.printStackTrace();
             }
         }).start();
     }
+
 
 
     public void swap() {
