@@ -1,0 +1,20 @@
+.user-message {
+    -fx-background-color: lightblue;
+    -fx-padding: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 16px;
+    -fx-font-family: "SansSerif";
+}
+
+.gpt-message {
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #d8d8d8;
+    -fx-border-width: 1px;
+    -fx-wrap-text: true;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-font-family: "SansSerif";
+}

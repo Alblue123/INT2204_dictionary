@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
-    @FXML private Button btn_search, btn_add, btn_edit, btn_gg, btn_game, btn_wl, btn_light;
+    @FXML private Button btn_search, btn_add, btn_edit, btn_gg, btn_game, btn_wl, btn_chat;
 
     @FXML private AnchorPane todo_pane;
 
@@ -26,11 +26,11 @@ public class MainMenuController implements Initializable {
     private AnchorPane add_word_pane;
     private AnchorPane edit_word_pane;
     private AnchorPane game_pane;
+    private AnchorPane gpt_pane;
     private SearchController searchController;
     private AddWordViewController addWordViewController;
     private EditWordViewController editWordViewController;
     private GoogleTranslateController googleTranslateController;
-    private GameController gameManager;
     private WordListController wordListController;
     private AnchorPane gg_translate_pane;
     private AnchorPane wordlist_pane;
@@ -78,6 +78,11 @@ public class MainMenuController implements Initializable {
         this.setToDo(game_pane);
     }
 
+    /** show gpt view. */
+    public void gptView() {
+        this.setToDo(gpt_pane);
+    }
+
     /**
      * On clicking switch scene
      *
@@ -96,6 +101,8 @@ public class MainMenuController implements Initializable {
             this.gameView();
         } else if (ev.getSource() == btn_wl) {
             this.wordlistView();
+        } else if (ev.getSource() == btn_chat) {
+            this.gptView();
         }
     }
     @Override
@@ -149,6 +156,14 @@ public class MainMenuController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/fxml/word_list_view.fxml"));
             wordlist_pane = fxmlLoader.load();
             wordListController= fxmlLoader.getController();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/gpt.fxml"));
+            gpt_pane = fxmlLoader.load();
         } catch (Exception e) {
             e.printStackTrace();
         }

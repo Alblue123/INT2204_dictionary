@@ -2,6 +2,7 @@ package application.controller;
 
 import application.API.Translator;
 import application.API.VoiceRSS;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,19 +29,23 @@ public class GoogleTranslateController implements Initializable {
     private boolean isVietnamese = false;
 
     public void translate() {
-        new Thread(() -> {
-            try {
+    new Thread(
+            () -> {
+              try {
                 String source = sourceText.getText();
-                if (isVietnamese) {
-                    desText.setText(Translator.viToEn(source));
-                } else {
-                    desText.setText(Translator.enToVi(source));
-                }
-            } catch (Exception e) {
+                  Platform.runLater(() -> {
+                      if (isVietnamese) {
+                          desText.setText(Translator.viToEn(source));
+                      } else {
+                          desText.setText(Translator.enToVi(source));
+                      }
+                  });
+              } catch (Exception e) {
                 System.out.println("Connection lost during translation.");
                 e.printStackTrace();
-            }
-        }).start();
+              }
+            })
+        .start();
     }
 
     public void speak() {

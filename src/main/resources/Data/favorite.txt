@@ -1,2 +1,7 @@
+a
+apple
+habit
+management
+manager
+mandamus
 sleep
-sleeping-pills

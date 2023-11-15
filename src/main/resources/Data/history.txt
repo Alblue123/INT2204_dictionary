@@ -1,15 +1,15 @@
-sleeping
-sleepily
-sleep
-sleep
-sleepily
-sleeping
-sleeping-pills
-sleeping-bag
-sleeping-car
+aaa
+apple
+manager
+management
+mandamus
+mandamus
+mandamus
+mandamus
+biogenist
+air
 1-byte character code
-2D configuration
-2D configuration
-7-bit ASCII code
-7-bit ASCII code
-ACK (Acknowledge <Positive>)
+1-byte character
+8-bit character string
+8-bit character string
+sleep
