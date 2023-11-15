@@ -137,6 +137,28 @@ public class GameController implements Initializable {
             e.printStackTrace();
         }
     }
+    private void loadGameOverScene() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameOver.fxml"));
+            Parent root = loader.load();
+    
+            // Create a new scene with the GameOver view
+            Scene scene = new Scene(root);
+    
+            // Get the stage from the current scene
+            Stage stage = (Stage) gridPane.getScene().getWindow();
+    
+            // Set the scene to the stage
+            stage.setScene(scene);
+    
+            // Show the stage
+            stage.show();
+    
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -199,7 +221,7 @@ protected void handleStartGameButton(ActionEvent event) {
                 if (timeSeconds <= 0) {
                     // Time is up, stop the timer
                     timeline.stop();
-                    showTimeUpAlert();
+                    loadGameOverScene();
                 }
             }
         }));
@@ -207,28 +229,7 @@ protected void handleStartGameButton(ActionEvent event) {
         timeline.playFromStart(); // Start the countdown
     }
 
-    protected void showTimeUpAlert() {
-    // Create a time-up alert
-    Alert alert = new Alert(AlertType.INFORMATION);
-    alert.setTitle("Time's Up!");
-    alert.setHeaderText(null);
-    alert.setContentText("Your time is up!");
-
-    // Set the result converter to handle the OK button
-    alert.setResultConverter(buttonType -> {
-        if (buttonType == ButtonType.OK) {
-            // Set gameStarted to false when OK is pressed
-            gameStarted = false;
-            return null;
-        }
-        return null;
-    });
-
-    // Show the alert and wait for the OK button to be pressed
-    Optional<ButtonType> result = alert.showAndWait();
-}
-
-    
+   
 
 
 protected void shuffleButtonsInGridPane() {
