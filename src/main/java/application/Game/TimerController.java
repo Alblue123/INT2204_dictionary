@@ -1,7 +1,8 @@
-package application.controller;
+package application.Game;
 
 
 
+import application.controller.GameController;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;

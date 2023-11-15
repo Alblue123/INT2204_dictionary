@@ -91,5 +91,6 @@ public class GoogleTranslateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sourceText.setWrapText(true);
         desText.setWrapText(true);
+        desText.setEditable(false);
     }
 }

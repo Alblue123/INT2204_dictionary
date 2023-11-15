@@ -21,9 +21,6 @@ public class MainMenuController implements Initializable {
 
     @FXML private AnchorPane todo_pane;
 
-    @FXML private ImageView my_light;
-
-    public static boolean isLightMode = true;
     private AnchorPane current_pane;
     private AnchorPane search_pane;
     private AnchorPane add_word_pane;
@@ -37,18 +34,6 @@ public class MainMenuController implements Initializable {
     private WordListController wordListController;
     private AnchorPane gg_translate_pane;
     private AnchorPane wordlist_pane;
-
-    private Image image1 =
-            new Image(Objects.requireNonNull(getClass().
-                    getResourceAsStream("/img/grey_sun_icon.png")));
-    private final Image image2 =
-            new Image(Objects.requireNonNull(getClass().
-                    getResourceAsStream("/img/moon_icon.png")));
-
-    public static boolean isLightMode() {
-        return isLightMode;
-    }
-    public static void changeMode() { isLightMode = !isLightMode; }
 
     /**
      * switch the pane and track the current pane
@@ -82,20 +67,6 @@ public class MainMenuController implements Initializable {
         wordListController.init();
     }
 
-    public void onChangeMode() {
-        Platform.runLater(() -> {
-            changeMode();
-            if (!isLightMode) {
-                btn_light.getScene().getStylesheets().clear();
-                my_light.setImage(image2);
-                btn_light.getStylesheets().add(getClass().getResource("/css/darkMainMenu.css").toExternalForm());
-            } else {
-                btn_light.getScene().getStylesheets().clear();
-                my_light.setImage(image1);
-                btn_light.getStylesheets().add(getClass().getResource("/css/mainMenu.css").toExternalForm());
-            }
-        });
-    }
 
     /** show gg translate view. */
     public void ggTranslateView() {
@@ -125,8 +96,6 @@ public class MainMenuController implements Initializable {
             this.gameView();
         } else if (ev.getSource() == btn_wl) {
             this.wordlistView();
-        } else if (ev.getSource() == btn_light) {
-            this.onChangeMode();
         }
     }
     @Override

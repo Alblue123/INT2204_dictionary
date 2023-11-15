@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="658.0" style="-fx-background-color: #3399CC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="780.0" style="-fx-background-color: #3399CC;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
    <children>
-      <GridPane fx:id="gridPane" layoutX="217.0" layoutY="95.0">
+      <GridPane fx:id="gridPane" layoutX="323.0" layoutY="96.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="45.0" prefWidth="45.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="45.0" prefWidth="45.0" />
@@ -125,16 +129,25 @@
                 </font></Button>
          </children>
       </GridPane>
-      <TextField fx:id="wordTextField" layoutX="217.0" layoutY="366.0" onAction="#handleSubmitButton" prefHeight="25.0" prefWidth="225.0" promptText="your word here..." />
-      <Button layoutX="304.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
-      <Button alignment="CENTER" layoutX="45.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleStartGameButton" prefHeight="120.0" prefWidth="120.0" text="Start Game" />
-      <Button alignment="CENTER" layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="53.0" prefWidth="61.0" text="Exit" />
+      <TextField fx:id="wordTextField" editable="false" layoutX="323.0" layoutY="349.0" onAction="#handleSubmitButton" prefHeight="25.0" prefWidth="225.0" promptText="your word here..." />
+      <Button layoutX="409.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font></Button>
+      <Button alignment="CENTER" layoutX="92.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleStartGameButton" prefHeight="120.0" prefWidth="120.0" text="Start Game">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font></Button>
+      <Button alignment="CENTER" layoutX="31.0" layoutY="424.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="53.0" prefWidth="61.0" text="Exit">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font></Button>
       <Label fx:id="scoreLabel" alignment="CENTER" layoutX="31.0" layoutY="22.0" prefHeight="45.0" prefWidth="61.0" style="-fx-background-color: #d49c44;" text="Score: 0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="timerLabel" alignment="CENTER" layoutX="550.0" layoutY="22.0" prefHeight="45.0" prefWidth="61.0" style="-fx-background-color: #d49c44;">
+      <Label fx:id="timerLabel" alignment="CENTER" layoutX="643.0" layoutY="22.0" prefHeight="45.0" prefWidth="61.0" style="-fx-background-color: #d49c44;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

@@ -1,6 +1,9 @@
-package application.controller;
+package application.Game;
 
 import java.util.stream.Collectors;
+
+import application.Game.ValidWordsProvider;
+import application.controller.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

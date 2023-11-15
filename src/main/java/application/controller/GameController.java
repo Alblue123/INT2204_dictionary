@@ -1,12 +1,11 @@
 package application.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.Optional;
+
+import application.Game.ValidWordsProvider;
+import application.Game.WordFetcher;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -16,33 +15,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.util.List;
+
 import java.util.Random;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 
 import application.Game.Scorer;
 import javafx.event.EventHandler;
@@ -140,7 +128,6 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       
     }
 
     protected void populateButtonsToUpdate() {
@@ -294,7 +281,7 @@ protected void handleSubmitButton(ActionEvent event) {
         String submittedWord = wordTextField.getText().trim().toLowerCase();
         int wordScore = scorer.calculateScore(submittedWord);
 
-        List<String> validWords = ValidWordsProvider.getValidWords();  
+        List<String> validWords = ValidWordsProvider.getValidWords();
 
         if (submittedWordsList.contains(submittedWord)) {
             // Handle the case where the word is a duplicate

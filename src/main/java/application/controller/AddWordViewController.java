@@ -44,7 +44,8 @@ public class AddWordViewController extends ModifiedWordController implements Ini
         LanguageDetector detector = LanguageDetector.getDefaultLanguageDetector().loadModels();
         detector.addText(word);
         LanguageResult languageResult = detector.detect();
-        return languageResult.getLanguage().equals("vi");
+    return !languageResult.getLanguage().equals("en")
+            && languageResult.getLanguage().equals("vi");
     }
 
   @FXML

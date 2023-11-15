@@ -1,4 +1,4 @@
-package application.controller;
+package application.Game;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,7 +14,7 @@ public class WordFetcher {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 
-                String filePath = "scr/main/resources/data/engmix.txt";
+                String filePath = "src/main/resources/data/favorite.txt";
                 Path path = Paths.get(filePath);
 
                 // Read all lines from the file
