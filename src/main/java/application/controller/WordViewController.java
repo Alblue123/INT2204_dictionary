@@ -3,6 +3,7 @@ package application.controller;
 import application.API.Synonym;
 import application.API.VoiceRSS;
 import application.backCode.Bookmark;
+import application.backCode.History;
 import application.backCode.Trie;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -20,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Objects;
 
 import static application.MainApplication.dictionary;
@@ -29,8 +31,6 @@ public class WordViewController extends MasterView {
     private WebView word_view_web_view;
     @FXML
     private ImageView my_fav;
-
-
 
     Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_icon.png")));
     Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_filled_icon.png")));
@@ -52,10 +52,11 @@ public class WordViewController extends MasterView {
     }
 
     @FXML
-   public void clickDelete(MouseEvent e) {
+   public void clickDelete(MouseEvent e) throws IOException {
         String word = view_word_word.getText();
         dictionary.delete(word);
         Trie.erase(word);
+        History.deleteWord(word);
         this.reload();
     }
 

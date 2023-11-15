@@ -20,7 +20,6 @@ public class MainMenuController implements Initializable {
     @FXML private Button btn_search, btn_add, btn_edit, btn_gg, btn_game, btn_wl, btn_chat;
 
     @FXML private AnchorPane todo_pane;
-
     private AnchorPane current_pane;
     private AnchorPane search_pane;
     private AnchorPane add_word_pane;
@@ -28,9 +27,6 @@ public class MainMenuController implements Initializable {
     private AnchorPane game_pane;
     private AnchorPane gpt_pane;
     private SearchController searchController;
-    private AddWordViewController addWordViewController;
-    private EditWordViewController editWordViewController;
-    private GoogleTranslateController googleTranslateController;
     private WordListController wordListController;
     private AnchorPane gg_translate_pane;
     private AnchorPane wordlist_pane;
@@ -105,6 +101,7 @@ public class MainMenuController implements Initializable {
             this.gptView();
         }
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -120,7 +117,6 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/add_word_view.fxml"));
             add_word_pane = fxmlLoader.load();
-            addWordViewController = fxmlLoader.getController();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,7 +125,6 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/edit_word_view.fxml"));
             edit_word_pane = fxmlLoader.load();
-            editWordViewController = fxmlLoader.getController();
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -138,7 +133,6 @@ public class MainMenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/googletranslate_view.fxml"));
             gg_translate_pane = fxmlLoader.load();
-            googleTranslateController = fxmlLoader.getController();
         } catch (Exception e) {
             e.printStackTrace();
         }
