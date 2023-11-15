@@ -2,11 +2,11 @@ module application {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
-    requires java.sql;
+    
     requires org.xerial.sqlitejdbc;
-    requires voicerss.tts;
+    
     requires javafx.media;
-    requires java.desktop;
+    
     requires org.apache.tika.core;
     requires org.json;
     requires org.apache.commons.text;
