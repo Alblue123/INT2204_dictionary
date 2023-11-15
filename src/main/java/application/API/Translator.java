@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 
 public class Translator {
@@ -14,18 +15,20 @@ public class Translator {
         try {
             return translate("en", "vi", content);
         } catch (IOException e) {
-            e.printStackTrace();
+            return "Error: Unable to translate due to a network error.";
+        } catch (Exception e) {
+            return "Error: An unexpected error occurred during translation.";
         }
-        return "Error: translating";
     }
 
     public static String viToEn(String content) {
         try {
             return translate("vi", "en", content);
         } catch (IOException e) {
-            e.printStackTrace();
+            return "Error: Unable to translate due to a network error.";
+        } catch (Exception e) {
+            return "Error: An unexpected error occurred during translation.";
         }
-        return "Error: translating";
     }
     /**
      * Translate text from `langSource` to `langDes`.

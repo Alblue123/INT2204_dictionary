@@ -9,12 +9,6 @@ public class GPT {
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
     private static final String API_KEY = "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";
     private static final String MODEL = "gpt-3.5-turbo";
-
-    public static void main(String [] args) {
-        Thread t1 = new Thread(() -> System.out.println(chatGPT("hello, how are you?")));
-        t1.start();
-    }
-
     public static String chatGPT(String message) {
         try {
             HttpURLConnection connection = createConnection();

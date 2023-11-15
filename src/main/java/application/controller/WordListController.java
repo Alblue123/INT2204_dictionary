@@ -24,7 +24,8 @@ import java.util.*;
 
 import static application.MainApplication.dictionary;
 
-public class WordListController extends MasterView implements Initializable {
+public class WordListController extends MasterView {
+    @Override
     @FXML
     public void findTarget() {
         String target = start_search.getText();
@@ -32,23 +33,10 @@ public class WordListController extends MasterView implements Initializable {
         loadWordView(target, explain);
     }
 
-    @FXML
-    public void clickWord(MouseEvent e) {
-        if (e.getButton().equals(MouseButton.PRIMARY)) {
-            if (e.getClickCount() == 1 && search_list != null) {
-                String target = search_list.getSelectionModel().getSelectedItem();
-                if (target != null) {
-                    start_search.setText(target);
-                    findTarget();
-                }
-            }
-        }
-
-    }
-
+    @Override
     @FXML
     public void searchList() {
-        search_list.getItems().clear();
+        this.getSearch_list().getItems().clear();
         String searchText = start_search.getText();
         ArrayList<String> list = Trie.searchPrefix(searchText);
 
@@ -56,11 +44,11 @@ public class WordListController extends MasterView implements Initializable {
 
         for (String word : list) {
             if (favoriteWords.contains(word)) { // Check if the word is a favorite
-                search_list.getItems().add(word);
+                this.getSearch_list().getItems().add(word);
             }
         }
 
-        search_list.setCellFactory(
+        this.getSearch_list().setCellFactory(
                 new Callback<>() {
                     @Override
                     public ListCell<String> call(ListView<String> list) {
@@ -81,30 +69,4 @@ public class WordListController extends MasterView implements Initializable {
                     }
                 });
     }
-
-    @FXML
-    public void clickDefinition(MouseEvent e) {
-        if (e.getButton().equals(MouseButton.PRIMARY)) {
-            if (e.getClickCount() == 1 && search_list != null) {
-                findTarget();
-            }
-        }
-
-    }
-
-    @FXML
-    public void clickSynonyms(MouseEvent e) throws IOException {
-        if (e.getButton().equals(MouseButton.PRIMARY)) {
-            if (e.getClickCount() == 1 && search_list != null) {
-                loadSynonymsView(start_search.getText());
-            }
-        }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
-
 }

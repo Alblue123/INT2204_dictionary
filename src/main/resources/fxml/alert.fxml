@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="77.0" prefWidth="354.0" styleClass="alert" stylesheets="@../css/alert.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AlertController">
+<VBox prefHeight="77.0" prefWidth="354.0" styleClass="alert" stylesheets="@../css/alert.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AlertController">
     <children>
         <Label fx:id="alertHeader" prefWidth="274.0" styleClass="alertHeader" stylesheets="@../css/alert.css" text="Create Alert!" />
         <Label fx:id="alertBody" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" prefWidth="274.0" styleClass="alertBody" stylesheets="@../css/alert.css" text="Create a new alert." wrapText="true" />

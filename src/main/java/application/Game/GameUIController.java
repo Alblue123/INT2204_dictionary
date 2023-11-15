@@ -34,11 +34,6 @@ public class GameUIController extends GameController {
     @FXML
     private Label timerLabel;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        // Initialization code for the controller
-    }
-
     protected void populateButtonsToUpdate() {
         buttonsToUpdate = gridPane.getChildren().stream()
                 .filter(node -> node instanceof Button)
@@ -97,11 +92,6 @@ public class GameUIController extends GameController {
         }
     }
 
-    // Add this method to provide access to the GridPane
-    public GridPane getGridPane() {
-        return gridPane;
-    }
-
     protected Button clickedButton;
 
     @FXML
@@ -117,20 +107,6 @@ public class GameUIController extends GameController {
             wordTextField.setText(currentWord.toString());
 
             toggleClickedEffect(clickedButton);
-        }
-    }
-
-    protected void toggleClickedEffect(Button button) {
-        // Check if the button currently has the clicked effect
-        String currentStyle = button.getStyle();
-        String clickedStyle = "-fx-background-color: #a67b3a;";
-
-        if (currentStyle.equals(clickedStyle)) {
-            // Reset the button style to its original state
-            button.setStyle("-fx-background-color: #d49c44");
-        } else {
-            // Apply the clicked effect to the button
-            button.setStyle(clickedStyle);
         }
     }
 
@@ -189,27 +165,10 @@ public class GameUIController extends GameController {
         }
     }
 
-    protected void enableAllButtons() {
-        for (Button button : buttonsToUpdate) {
-            button.setDisable(false);
-        }
-    }
-
-    protected void changeButtonColors(String color) {
-        for (Button button : buttonsToUpdate) {
-            button.setStyle("-fx-background-color: " + color + ";");
-        }
-    }
-
     protected void updateScoreLabel() {
         if (scoreLabel != null) {
             scoreLabel.setText("Score: " + currentScore);
         }
-    }
-
-    // Add a method to get the current score
-    public int getCurrentScore() {
-        return currentScore;
     }
 
     @FXML

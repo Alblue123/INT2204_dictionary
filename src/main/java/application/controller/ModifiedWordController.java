@@ -4,18 +4,32 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.HTMLEditor;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Objects;
 
-public class ModifiedWordController {
+public abstract class ModifiedWordController {
     @FXML
-    protected VBox msg_box;
+    private TextField input_word;
+    @FXML
+    private HTMLEditor input_explain;
+    @FXML
+    private VBox msg_box;
+
+    public TextField getInput_word() {
+        return input_word;
+    }
+
+    public HTMLEditor getInput_explain() {
+        return input_explain;
+    }
 
     protected void displayAlert(String header, String body, boolean state) {
         this.displayAlert(header, body, "new_alert_message", true, state);
@@ -45,11 +59,13 @@ public class ModifiedWordController {
 
         if (state) {
             alertBox.getStylesheets().add(
-                    getClass().getResource("/css/alert.css")
+                    Objects.requireNonNull(
+                            getClass().getResource("/css/alert.css"))
                             .toExternalForm());
         } else {
             alertBox.getStylesheets().add(
-                    getClass().getResource("/css/alertFailed.css")
+                    Objects.requireNonNull(
+                            getClass().getResource("/css/alertFailed.css"))
                             .toExternalForm());
         }
 
@@ -73,12 +89,10 @@ public class ModifiedWordController {
         }
     }
 
-    protected void clearAlert() {
-        this.clearAlert("new_alert_message");
-    }
-
     protected void clearAlert(String alertId) {
         ObservableList<Node> messageChildren = msg_box.getChildren();
         messageChildren.removeIf(node -> alertId.equals(node.getId()));
     }
+
+    public abstract void save(ActionEvent e) throws IOException;
 }

@@ -7,11 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -27,9 +26,6 @@ public class ChatGPTController implements Initializable {
     private TextField inputField;
     @FXML
     private ScrollPane scrollPane;
-    @FXML
-    private Label promptCountLabel;
-
     private static final int MAX_PROMPTS = 5;
     private int promptCount = 0;
     public void handleUserMessage(ActionEvent event) {
@@ -51,9 +47,9 @@ public class ChatGPTController implements Initializable {
         chatBox.getChildren().add(loadingMessage);
 
         // Create a new task to get response from GPT model
-        Task<String> gptTask = new Task<String>() {
+        Task<String> gptTask = new Task<>() {
             @Override
-            protected String call() throws Exception {
+            protected String call() {
                 return GPT.chatGPT(userMessage);
             }
         };

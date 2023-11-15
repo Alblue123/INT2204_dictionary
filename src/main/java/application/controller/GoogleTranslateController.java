@@ -14,6 +14,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ResourceBundle;
@@ -21,32 +22,29 @@ import java.util.ResourceBundle;
 public class GoogleTranslateController implements Initializable {
     @FXML private TextArea sourceText;
     @FXML private TextArea desText;
-    @FXML private Button btn_translate;
-    @FXML private Button btn_swap;
-    @FXML private Button btn_speak;
     @FXML private Label upper_label;
     @FXML private Label below_label;
     private boolean isVietnamese = false;
 
     public void translate() {
-    new Thread(
-            () -> {
-              try {
-                String source = sourceText.getText();
-                  Platform.runLater(() -> {
-                      if (isVietnamese) {
-                          desText.setText(Translator.viToEn(source));
-                      } else {
-                          desText.setText(Translator.enToVi(source));
-                      }
-                  });
-              } catch (Exception e) {
-                System.out.println("Connection lost during translation.");
-                e.printStackTrace();
-              }
-            })
-        .start();
+        new Thread(
+                () -> {
+                    try {
+                        String source = sourceText.getText();
+                        Platform.runLater(() -> {
+                            if (isVietnamese) {
+                                desText.setText(Translator.viToEn(source));
+                            } else {
+                                desText.setText(Translator.enToVi(source));
+                            }
+                        });
+                    } catch (Exception e) {
+                        System.out.println("Connection lost during translation.");
+                    }
+                })
+                .start();
     }
+
 
     public void speak() {
     new Thread(
@@ -64,7 +62,6 @@ public class GoogleTranslateController implements Initializable {
                 }
               } catch (Exception e) {
                 System.out.println("Connection lost during speech.");
-                e.printStackTrace();
               }
             })
         .start();

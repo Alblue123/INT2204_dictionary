@@ -62,7 +62,7 @@ public class OnlineDictionary extends Dictionary {
         } finally {
             try {
                 if (ps != null) {
-                    ps.close();
+                    close(ps);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -87,10 +87,10 @@ public class OnlineDictionary extends Dictionary {
         } finally {
             try {
                 if (rs != null) {
-                    rs.close();
+                    close(rs);
                 }
                 if (ps != null) {
-                    ps.close();
+                    close(ps);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -116,10 +116,10 @@ public class OnlineDictionary extends Dictionary {
         } finally {
             try {
                 if (rs != null) {
-                    rs.close();
+                    close(rs);
                 }
                 if (ps != null) {
-                    ps.close();
+                    close(ps);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -149,10 +149,10 @@ public class OnlineDictionary extends Dictionary {
         } finally {
             try {
                 if (rs != null) {
-                    rs.close();
+                    close(rs);
                 }
                 if (ps != null) {
-                    ps.close();
+                    close(ps);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -218,6 +218,7 @@ public class OnlineDictionary extends Dictionary {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            Trie.erase(wordTarget);
         }
     }
 
@@ -240,10 +241,10 @@ public class OnlineDictionary extends Dictionary {
         } finally {
             try {
                 if (rs != null) {
-                    rs.close();
+                    close(rs);
                 }
                 if (ps != null) {
-                    ps.close();
+                    close(ps);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -25,8 +25,6 @@ public class MainApplication extends Application {
         launch(args);
     }
 
-    
-
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         stage.setResizable(false);

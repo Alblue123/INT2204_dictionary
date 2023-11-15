@@ -8,23 +8,11 @@ public class TrieNode {
 
     private boolean checkEndOfWord;
 
-    private String content;
-
     /**
      * Constructor 1.
      */
     public TrieNode() {
         this.checkEndOfWord = false;
-    }
-
-    /** content getter. */
-    public String getContent() {
-        return content;
-    }
-
-    /** content setter. */
-    public void setContent(String content) {
-        this.content = content;
     }
 
     /** checkEndOfWord getter. */

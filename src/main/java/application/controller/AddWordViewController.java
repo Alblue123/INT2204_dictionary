@@ -23,17 +23,7 @@ import org.apache.tika.language.detect.LanguageResult;
 
 import static application.MainApplication.dictionary;
 
-public class AddWordViewController extends ModifiedWordController implements Initializable {
-    @FXML
-    private TextField input_word;
-    @FXML
-    private Button btn_save;
-    @FXML
-    private HTMLEditor input_explain;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
+public class AddWordViewController extends ModifiedWordController {
 
     /**
      * Check if word is a valid word or not
@@ -44,15 +34,14 @@ public class AddWordViewController extends ModifiedWordController implements Ini
         LanguageDetector detector = LanguageDetector.getDefaultLanguageDetector().loadModels();
         detector.addText(word);
         LanguageResult languageResult = detector.detect();
-    return !languageResult.getLanguage().equals("en")
-            && languageResult.getLanguage().equals("vi");
+        return languageResult.getLanguage().equals("vi");
     }
-
+    @Override
   @FXML
   public void save(ActionEvent e) throws IOException {
         try {
-            String word = input_word.getText();
-            byte[] pText = input_explain.getHtmlText().getBytes(StandardCharsets.ISO_8859_1);
+            String word = this.getInput_word().getText();
+            byte[] pText = this.getInput_explain().getHtmlText().getBytes(StandardCharsets.ISO_8859_1);
             String definition = new String(pText, StandardCharsets.UTF_8);
             definition =
                     definition.replace(
@@ -69,9 +58,10 @@ public class AddWordViewController extends ModifiedWordController implements Ini
             }
         } catch(DictionaryException ex) {
             System.out.println(ex.getMessage());
+        } finally{
+            this.getInput_word().setText("");
+            this.getInput_explain().setHtmlText("");
         }
-
     }
-
 
 }

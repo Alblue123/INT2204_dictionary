@@ -2,27 +2,19 @@ package application.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import application.Game.ValidWordsProvider;
-import application.Game.WordFetcher;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,11 +31,11 @@ import javafx.util.Duration;
 
 
 
-public class GameController implements Initializable {
+public class GameController {
     protected boolean gameStarted = false;
-    protected WordFetcher wordFetcher = new WordFetcher();
     protected Scorer scorer = new Scorer(); 
-    protected int currentScore = 0;  
+    protected int currentScore = 0;
+    protected Button clickedButton;
     protected List<Button> buttonsToUpdate;
     protected Set<String> dictionary = new HashSet<>();
     protected StringBuilder currentWord = new StringBuilder();
@@ -59,10 +51,7 @@ public class GameController implements Initializable {
     protected Label timerLabel;
     protected int timeSeconds = 60; // Initial countdown time in seconds
     protected Timeline timeline;
-    
 
-
-    String randomAlphabet = getRandomLetter();
     protected String getRandomLetter() {
         Random random = new Random();
         char randomChar = (char) (random.nextInt(26) + 'A');
@@ -76,9 +65,6 @@ public class GameController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/player_view.fxml"));
             
             Parent root = loader.load();
-
-            GameController controller = loader.getController();
-
 
             // Create a new scene with the playing view
             Scene scene = new Scene(root);
@@ -104,9 +90,6 @@ public class GameController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/gameinfo_view.fxml"));
             
             Parent root = loader.load();
-
-            GameController controller = loader.getController();
-
 
             // Create a new scene with the playing view
             Scene scene = new Scene(root);
@@ -145,11 +128,6 @@ public class GameController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
     }
 
     protected void populateButtonsToUpdate() {
@@ -234,16 +212,6 @@ protected void shuffleButtonsInGridPane() {
         gridPane.add(button, i % numColumns, i / numColumns);
     }
 }
-
-// Add this method to provide access to the GridPane
-public GridPane getGridPane() {
-    return gridPane;
-}
-
-
-    
-    
-protected Button clickedButton;
 
 @FXML
 protected void handleButtonClick(ActionEvent event) {
@@ -348,24 +316,18 @@ protected void updateScoreLabel() {
     }
 }
 
-
-// Add a method to get the current score
-public int getCurrentScore() {
-    return currentScore;
-}
-
     @FXML
     protected void handleExitButton(ActionEvent event) {
         try {
             // Load the main menu view FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameOver.fxml"));
             Parent root = loader.load();
 
-            // Create a new scene with the main menu view
+            // Create a new scene with the GameOver view
             Scene scene = new Scene(root);
 
-            // Get the stage from the event source
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            // Get the stage from the current scene
+            Stage stage = (Stage) gridPane.getScene().getWindow();
 
             // Set the scene to the stage
             stage.setScene(scene);

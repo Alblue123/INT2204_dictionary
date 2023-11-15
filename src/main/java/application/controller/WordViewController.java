@@ -5,6 +5,7 @@ import application.API.VoiceRSS;
 import application.backCode.Bookmark;
 import application.backCode.Trie;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,13 +28,9 @@ public class WordViewController extends MasterView {
     @FXML
     private WebView word_view_web_view;
     @FXML
-    private Label book_mark;
-    @FXML
-    private Label word_delete;
-    @FXML
     private ImageView my_fav;
-    @FXML
-    private Label word_speaker;
+
+
 
     Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_icon.png")));
     Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_filled_icon.png")));
@@ -71,10 +68,20 @@ public class WordViewController extends MasterView {
     public void clickSpeaker(MouseEvent e) {
         try {
             String word = view_word_word.getText();
-            if (word == null) {
+            if (word.isEmpty()) {
                 throw new Exception("You have to have word to speak.");
             } else {
-                VoiceRSS.speakWords(word, "Nancy", "en-gb");
+                // Create a new task for speech synthesis
+                Task<Void> speakTask = new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        VoiceRSS.speakWords(word, "Nancy", "en-gb");
+                        return null;
+                    }
+                };
+
+                // Start the task in a new thread
+                new Thread(speakTask).start();
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

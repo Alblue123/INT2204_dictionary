@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane prefHeight="500.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AddWordViewController">
+<AnchorPane prefHeight="500.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AddWordViewController">
    <children>
       <Label layoutX="29.0" layoutY="14.0" prefHeight="39.0" prefWidth="542.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #eeeeee;" text="Add a new word">
          <font>

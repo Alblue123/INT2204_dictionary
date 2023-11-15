@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.WordListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.WordListController">
    <children>
       <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="449.0" prefWidth="223.0" styleClass="view" stylesheets="@../css/mainMenu.css">
          <children>
-            <TextField fx:id="start_search" layoutX="18.0" layoutY="14.0" onAction="#enterInput" onKeyTyped="#searchList" prefHeight="26.0" prefWidth="185.0" promptText="Enter your word" styleClass="search_bar" stylesheets="@../css/mainMenu.css">
+            <TextField fx:id="start_search" layoutX="18.0" layoutY="14.0" onKeyTyped="#searchList" prefHeight="26.0" prefWidth="185.0" promptText="Enter your word" styleClass="search_bar" stylesheets="@../css/mainMenu.css">
                <font>
                   <Font name="SansSerif Bold" size="16.0" />
                </font>

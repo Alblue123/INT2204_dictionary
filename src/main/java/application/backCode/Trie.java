@@ -93,29 +93,4 @@ public class Trie {
         return true;
     }
 
-    /**
-     * update the definition of the word.
-     * @param target  the word you want
-     * @param meaning new definition
-     */
-    public static boolean update(String target, String meaning) {
-        int length = target.length();
-        TrieNode cur = root;
-
-        for (int i = 0; i < length; ++i) {
-            char x = target.charAt(i);
-
-            if (cur.getChildren().get(x) == null) {
-                return false;
-            }
-            cur = cur.getChildren().get(x);
-        }
-
-        if (!cur.isCheckEndOfWord()) {
-            return false;
-        }
-
-        cur.setContent(meaning);
-        return true;
-    }
 }

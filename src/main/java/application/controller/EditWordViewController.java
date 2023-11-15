@@ -17,23 +17,14 @@ import java.util.ResourceBundle;
 
 import static application.MainApplication.dictionary;
 
-public class EditWordViewController extends ModifiedWordController implements Initializable {
-    @FXML
-    private TextField input_old_word;
-    @FXML
-    private Button btn_save;
-    @FXML
-    private HTMLEditor input_explain;
+public class EditWordViewController extends ModifiedWordController {
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
-
     @FXML
-    public void edit_save(ActionEvent e) {
+    public void save(ActionEvent e) {
         try {
-            String word = input_old_word.getText();
-            byte[] pText = input_explain.getHtmlText().getBytes(StandardCharsets.ISO_8859_1);
+            String word = this.getInput_word().getText();
+            byte[] pText = this.getInput_explain().getHtmlText().getBytes(StandardCharsets.ISO_8859_1);
             String definition = new String(pText, StandardCharsets.UTF_8);
             definition =
                     definition.replace(
@@ -48,11 +39,10 @@ public class EditWordViewController extends ModifiedWordController implements In
             }
         } catch (DictionaryException ex) {
             System.out.println(ex.getMessage());
+        } finally{
+            this.getInput_word().setText("");
+            this.getInput_explain().setHtmlText("");
         }
 
     }
-
-
-
-
 }
