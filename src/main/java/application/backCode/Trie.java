@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Trie {
-    public static final int alphabet = 26;
     private static TrieNode root = new TrieNode();
 
     /**

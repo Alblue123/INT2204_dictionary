@@ -68,12 +68,19 @@ public class WordViewController extends MasterView {
     }
 
     @FXML
-    public void clickSpeaker(MouseEvent e) throws Exception {
-        String word = view_word_word.getText();
-        if (word != null) {
-            VoiceRSS.speakWords(word, "Nancy", "en-gb");
+    public void clickSpeaker(MouseEvent e) {
+        try {
+            String word = view_word_word.getText();
+            if (word == null) {
+                throw new Exception("You have to have word to speak.");
+            } else {
+                VoiceRSS.speakWords(word, "Nancy", "en-gb");
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
+
 
     public void handleAddBookMark() {
         String word = view_word_word.getText();

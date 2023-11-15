@@ -44,19 +44,25 @@ public class GoogleTranslateController implements Initializable {
     }
 
     public void speak() {
-        new Thread(() -> {
-            try {
+    new Thread(
+            () -> {
+              if (sourceText.getText().isEmpty()) {
+                System.out.println("You have to enter text to speak.");
+                return;
+              }
+              try {
                 String source = sourceText.getText();
                 if (isVietnamese) {
-                    VoiceRSS.speakWords(source, "Chi", "vi-vn");
+                  VoiceRSS.speakWords(source, "Chi", "vi-vn");
                 } else {
-                    VoiceRSS.speakWords(source, "Nancy", "en-gb");
+                  VoiceRSS.speakWords(source, "Nancy", "en-gb");
                 }
-            } catch (Exception e) {
+              } catch (Exception e) {
                 System.out.println("Connection lost during speech.");
                 e.printStackTrace();
-            }
-        }).start();
+              }
+            })
+        .start();
     }
 
 

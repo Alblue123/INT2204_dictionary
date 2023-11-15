@@ -1,5 +1,8 @@
 package application.controller;
 
+import application.Exception.DictionaryException;
+import application.Exception.ExistedWordException;
+import application.Exception.VietnameseWordException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,22 +47,29 @@ public class AddWordViewController extends ModifiedWordController implements Ini
         return languageResult.getLanguage().equals("vi");
     }
 
-    @FXML
-    public void save(ActionEvent e) throws IOException {
-        String word = input_word.getText();
-        byte[] pText = input_explain.getHtmlText().getBytes(StandardCharsets.ISO_8859_1);
-        String definition = new String(pText, StandardCharsets.UTF_8);
-        definition =
-                definition.replace(
-                        "<html dir=\"ltr\"><head></head><body contenteditable=\"true\">", "");
-        definition = definition.replace("</body></html>", "");
-        if (!dictionary.insert(word, definition)) {
-            this.displayAlert("Add word failed!", "You can't add word that already exists!", false);
-        } if(validate(word)) {
-            this.displayAlert("Add word failed!", "You can't add word that is Vietnamese!", false);
-        }else {
-            this.displayAlert("Word added successfully!", "Word has been added to dictionary!", true);
+  @FXML
+  public void save(ActionEvent e) throws IOException {
+        try {
+            String word = input_word.getText();
+            byte[] pText = input_explain.getHtmlText().getBytes(StandardCharsets.ISO_8859_1);
+            String definition = new String(pText, StandardCharsets.UTF_8);
+            definition =
+                    definition.replace(
+                            "<html dir=\"ltr\"><head></head><body contenteditable=\"true\">", "");
+            definition = definition.replace("</body></html>", "");
+            if (!dictionary.search(word).equals("Error: Word not found")) {
+                this.displayAlert("Add word failed!", "You can't add word that already exists!", false);
+                throw new ExistedWordException("Word already exists!");
+            } if(validate(word)) {
+                this.displayAlert("Add word failed!", "You can't add word that is Vietnamese!", false);
+                throw new VietnameseWordException("Word is Vietnamese!");
+            } else if (dictionary.insert(word, definition)) {
+                this.displayAlert("Word added successfully!", "Word has been added to dictionary!", true);
+            }
+        } catch(DictionaryException ex) {
+            System.out.println(ex.getMessage());
         }
+
     }
 
 
