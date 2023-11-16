@@ -16,25 +16,4 @@ public class Word {
         this.wordExplain = wordExplain;
     }
 
-    /** target word getter. */
-    public String getWordTarget() {
-        return wordTarget;
-    }
-
-    /** definition getter. */
-    public String getWordExplain() {
-        return wordExplain;
-    }
-
-    /** target word setter. */
-    public void setWordTarget(String wordTarget) {
-        wordTarget = wordTarget.toLowerCase();
-        this.wordTarget = wordTarget;
-    }
-
-    /** definition setter. */
-    public void setWordExplain(String wordExplain) {
-        this.wordExplain = wordExplain;
-    }
-
 }

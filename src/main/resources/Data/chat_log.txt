@@ -1,0 +1,46 @@
+User: Can i help you
+GPT: Yes, you can help me. Thank you for offering. What do you need assistance with?
+User: How many free tokens do i have left
+GPT: I'm sorry, I cannot answer that question as I do not have access to personal or account information. You would need to check with the relevant source or organization that issues the tokens to determine how many free tokens you have left.
+User: hi
+GPT: Hello! How can I assist you today?
+User: hi
+GPT: Hello! How can I help you today?
+User: hi
+GPT: Hello! How can I assist you today?
+User: Hi
+GPT: Hello! How can I assist you today?
+User: hi
+GPT: Hello! How can I assist you today?
+User: How are you today?
+GPT: As an AI, I don't have feelings, but I'm here to help you. How can I assist you today?
+User: hi
+GPT: Hello! How can I assist you today?
+User: Have a nice day
+GPT: Thank you! I hope you have a nice day as well.
+User: con vịt là gì trong tiếng anh
+GPT: Con vịt trong tiếng Anh được gọi là \
+User: là gì cơ?
+GPT: \
+User: What is the meaning of duck in Vietnamese
+GPT: In Vietnamese, the word \
+User: how about dog
+GPT: Dogs are often referred to as \
+User: Dog has how many legs?
+GPT: A dog typically has four legs.
+User: what is cat in vietnamese
+GPT: The word \
+User: What took you so long?
+GPT: I apologize for any delay. Is there something specific you are referring to?
+User: Do you know me?
+GPT: No, I don't know you personally. I am an AI language model and I don't have information about individuals unless you provide it to me during our conversation.
+User: Do i know you?
+GPT: No, I am an AI assistant and we have not interacted before.
+User: How are you
+GPT: I'm an AI assistant, so I don't have feelings, but I'm here to help you with any questions or tasks you have. How can I assist you today?
+User: Are you alright
+GPT: As an AI, I don't have physical sensations or emotions, so I am always \
+User: good, what is the weather in hanoi
+GPT: I'm sorry, but as an AI language model, I don't have real-time data. However, you can check the weather in Hanoi by using a reliable weather website or application.
+User: i love my mom
+GPT: That's wonderful to hear! Having a loving relationship with your mom can be a very special and important bond. Cherish the moments with her and continue to show your love and appreciation for her.

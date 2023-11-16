@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ChatGPTController implements Initializable {
+public class ChatGPTController {
     @FXML
     private VBox chatBox;
     @FXML
@@ -75,13 +75,5 @@ public class ChatGPTController implements Initializable {
 
         // Start the task in a new thread
         new Thread(gptTask).start();
-    }
-
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
     }
 }

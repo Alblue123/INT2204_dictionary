@@ -1,0 +1,372 @@
+@startuml
+class DictionaryException {
+    +DictionaryException(message: String)
+}
+
+class InvalidWordException {
+    +InvalidWordException(message: String)
+}
+
+
+DictionaryException <-- InvalidWordException
+
+class ExistedWordException {
+   +ExistedWordException(message: String)
+}
+InvalidWordException <-- ExistedWordException
+
+class NonExistedWordException {
+    +NonExistedWordException(message: String)
+}
+InvalidWordException <-- NonExistedWordException
+
+class VietnameseWordException {
+    +VietnameseWordException(message: String )
+}
+
+InvalidWordException <-- VietnameseWordException
+
+class GPT {
+    -API_URL: String
+    -API_KEY: String
+    -MODEL: String
+
+    +chatGPT(message: String): String
+    -createConnection(): HttpURLConnection
+    -sendRequest(connection: HttpURLConnection, message: String)
+    -getResponse(connection: HttpURLConnection): String
+    -extractContentFromResponse(response: String): String
+}
+
+class Synonym {
+    -key: String
+
+    +getSynonym(wordForm: String ): JSONObject
+}
+
+class Translator {
+    +enToVi(String content): String
+    +viToEn(String content): String
+    +translate(langSource: String,langDes: String,content: String ): String
+}
+
+class VoiceRSS {
+    -key: String
+    -path: String
+
+    +speakWords(content: String, name: String,language: String)
+}
+
+class Bookmark {
+    -path: String
+
+    +addToFile(word: String)
+    +deleteWord(word: String )
+}
+
+class ChatMessage {
+    +ChatMessage(message: String, alignment: Pos, limitText: String)
+}
+
+abstract class Dictionary {
+    +**getWords(): ArrayList<Word>**
+    +**getTargetWords(): ArrayList<String>**
+    +**insert(wordTarget: String , wordExplain: String): boolean**
+    +**delete(wordTarget: String)**
+    +**search(wordTarget: String): String**
+    +**edit(target: String, definition: String): boolean**
+    +**init()**
+    +**updateFavorite(target: String, favorite: boolean)**
+    +**checkFavorite(target: String): boolean**
+    +**getFavoriteWords(): Set<String>**
+}
+
+class OnlineDictionary {
+    +connect()
+    +close(connection: Connection)
+    +close(ps: PreparedStatement)
+    +close(rs: ResultSet)
+    +getWordsFromResultSet(ps: PreparedStatement): ArrayList<Word>
+    +getWords(): ArrayList<Word>
+    +getTargetWords(): ArrayList<String>
+    +insert(wordTarget: String , wordExplain: String): boolean
+    +delete(wordTarget: String)
+    +search(wordTarget: String): String
+    +edit(target: String, definition: String): boolean
+    +init()
+    +updateFavorite(target: String, favorite: boolean)
+    +checkFavorite(target: String): boolean
+    +getFavoriteWords(): Set<String>
+}
+
+Dictionary <-- OnlineDictionary
+
+class History {
+    -path: String
+    -MAX_WORDS: int
+    -his: ArrayList<String>
+
+    +maintainSize()
+    +addWord(target: String)
+    +deleteWord(target: String)
+    +insertHistory(target: String)
+    +loadHistory()
+}
+
+class TrieNode {
+    -children: HashMap<Character, TrieNode>
+    -checkEndOfWord: boolean
+
+    +TrieNode()
+    +isCheckEndOfWord(): boolean
+    +setCheckEndOfWord(checkEndOfWord: boolean)
+    +getChildren(): HashMap<Character, TrieNode>
+    +setChildren(children: HashMap<Character, TrieNode>)
+}
+
+class Trie {
+    -root: TrieNode
+
+    +add(word: String)
+    -search(searchList: ArrayList<String>, curNode: TrieNode, target: String)
+    +searchPrefix(prefix: String): ArrayList<String>
+    +erase(target: String): boolean
+
+}
+
+class Word {
+    -wordTarget: String
+    -wordExplain: String
+
+    +Word(wordTarget: String, wordExplain: String)
+}
+
+class MainMenuController {
+    -current_pane: AnchorPane
+    -search_pane: AnchorPane
+    -add_word_pane: AnchorPane
+    -edit_word_pane: AnchorPane
+    -game_pane: AnchorPane
+    -info_pane: AnchorPane
+    -gpt_pane: AnchorPane
+    -searchController: SearchController
+    -wordListController: WordListController
+    -gg_translate_pane: AnchorPane
+    -wordlist_pane: AnchorPane
+    -btn_search: Button
+    -btn_info: Button
+    -btn_add: Button
+    -btn_edit: Button
+    -btn_gg: Button
+    -btn_game: Button
+    -btn_wl: Button
+    -btn_chat: Button
+    -todo_pane: AnchorPane
+
+    -setToDo(anchorPane: AnchorPane)
+    +searchView()
+    +addWordView()
+    +editWordView()
+    +wordlistView()
+    +ggTranslateView()
+    +gameView()
+    +gptView()
+    +infoView()
+    +onClick(ev: ActionEvent)
+    +initialize(location: URL, resources: ResourceBundle)
+}
+
+class MasterView {
+    -search_list: ListView<String>
+    #start_search: TextField
+    -wordViewController: WordViewController
+    -synonymsController: SynonymController
+    -search_view: AnchorPane
+    #view_word_word: Label
+
+    +init()
+    +getSearch_list(): ListView<String>
+    +loadWordView(target: String, explain: String)
+    +loadSynonymsView(target: String)
+    +clickSynonyms(e MouseEvent)
+    +clickWord(e: MouseEvent)
+    **+findTarget()**
+    **+searchList()**
+    +clickDefinition(e: MouseEvent)
+}
+
+class SearchController {
+    -historyImage: Image
+
+    +searchList()
+    +findTarget()
+}
+
+MasterView <-- SearchController
+
+class SynonymController {
+    -synBox: VBox
+
+    +init(target: String)
+    +fetchData(list: JSONObject, type: String)
+}
+
+MasterView <-- SynonymController
+
+class WordViewController {
+    -word_view_web_view: WebView
+    -my_fav: ImageView
+    -image1: Image
+    -image2: Image
+
+    +init(target: String, explain: String)
+    +clickDelete(e: MouseEvent)
+    +reload()
+    +clickSpeaker(e: MouseEvent)
+    +handleAddBookMark()
+    +handleRemoveBookMark()
+    +clickBookMark(e: MouseEvent)
+}
+
+MasterView <-- WordViewController
+
+class WordListController {
+    +findTarget()
+    +searchList()
+}
+
+MasterView <-- WordListController
+
+class ModifiedWordController {
+    -input_word: TextField
+    -input_explain: HTMLEditor
+    -msg_box: VBox
+
+    +getInput_word(): TextField
+    +getInput_explain(): HTMLEditor
+    #displayAlert(header: String, body: String, state: boolean)
+    #displayAlert(header: String, body: String, autoClose: boolean, state: boolean)
+    +loadFXML(fxmlPath: String): VBox
+    #clearAlert(alertId: String)
+    **+save(e: ActionEvent)**
+}
+
+class AddWordViewController {
+    +validate(word: String): boolean
+    +save(e: ActionEvent)
+}
+
+ModifiedWordController <-- AddWordViewController
+
+class EditWordViewController {
+    +save(e: ActionEvent)
+}
+
+ModifiedWordController <-- EditWordViewController
+
+class GoogleTranslateController {
+    -sourceText: TextArea
+    -desText: TextArea
+    -upper_label: Label
+    -below_label: Label
+    -isVietnamese: boolean
+
+    +translate()
+    +speak()
+    +swap()
+    +copy()
+    +initialize(url: URL, resourceBundle: ResourceBundle)
+}
+
+class AlertController {
+    -alertHeader: Label
+    -alertBody: Label
+
+    +init(header: String, body: String)
+}
+
+class GameController {
+        #gameStarted: boolean
+        #scorer: Scorer
+        #currentScore: int
+        #clickedButton: Button
+        #buttonsToUpdate: List<Button>
+        #dictionary: Set<String>
+        #currentWord: StringBuilder
+        #submittedWordsList: List<String>
+        #isButtonClicked: boolean
+        #gridPane: GridPane
+        #scoreLabel: Label
+        #wordTextField: TextField
+        #timerLabel: Label
+        #timeSeconds: int
+        #timeline: Timeline
+
+        #getRandomLetter(): String
+        #handlePlayButton(event: ActionEvent)
+        #handleInfoButton(event: ActionEvent)
+        -loadGameOverScene()
+        #**populateButtonsToUpdate()**
+        #**handleStartGameButton(event ActionEvent)**
+        #startCountdown()
+        #**shuffleButtonsInGridPane()**
+        #**handleButtonClick(event: ActionEvent)**
+        #toggleClickedEffect(button: Button)
+        #**handleSubmitButton(event: ActionEvent)**
+        #**changeButtonTextOfClickedButton()**
+        #enableAllButtons()
+        #changeButtonColors(color: String)
+        #**updateScoreLabel()**
+        #**handleExitButton(event: ActionEvent)**
+}
+
+class GameUIController {
+private GridPane gridPane;
+    -scoreLabel: Label
+    -wordTextField: TextField
+    -timerLabel: Label
+    #clickedButton: Button
+
+
+    #populateButtonsToUpdate()
+    #handleStartGameButton(event: ActionEvent)
+    #shuffleButtonsInGridPane()
+    #handleButtonClick(event: ActionEvent)
+    #handleSubmitButton(event: ActionEvent)
+    #changeButtonTextOfClickedButton()
+    #updateScoreLabel()
+    #handleExitButton(event: ActionEvent)
+}
+
+GameController <-- GameUIController
+
+class TimerController {
+     #timeSeconds: int
+     #timeline: Timeline
+
+     #startCountdown()
+     #showTimeUpAlert()
+}
+
+GameController <-- TimerController
+
+class Scorer {
+     -POINTS_MAP: Map<Character, Integer>
+
+     -createPointsMap(): Map<Character, Integer>
+     +calculateScore(word: String): int
+}
+
+class ValidWordsProvider {
+    -VALID_WORDS_FILE_PATH: String
+    +getValidWords(): List<String>
+}
+
+class MainApplication {
+    +dictionary: Dictionary
+
+    +main(args: String[])
+    +start(stage: Stage)
+    +exit(stage: Stage)
+}
+@enduml

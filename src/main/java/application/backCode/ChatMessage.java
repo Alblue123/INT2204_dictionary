@@ -13,7 +13,7 @@ public class ChatMessage extends VBox {
         Label messageLabel = new Label(message);
         messageLabel.setWrapText(true);
         messageLabel.setTextAlignment(TextAlignment.JUSTIFY);
-        messageLabel.setMaxWidth(250);
+        messageLabel.setMaxWidth(500);
         messageLabel.setPadding(new Insets(5));
         messageLabel.setStyle("-fx-background-color: white; -fx-background-radius: 5;");
 

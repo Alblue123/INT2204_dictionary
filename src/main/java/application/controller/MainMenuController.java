@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
-    @FXML private Button btn_search, btn_add, btn_edit, btn_gg, btn_game, btn_wl, btn_chat;
+    @FXML private Button btn_search, btn_info, btn_add, btn_edit, btn_gg, btn_game, btn_wl, btn_chat;
 
     @FXML private AnchorPane todo_pane;
     private AnchorPane current_pane;
@@ -25,6 +25,7 @@ public class MainMenuController implements Initializable {
     private AnchorPane add_word_pane;
     private AnchorPane edit_word_pane;
     private AnchorPane game_pane;
+    private AnchorPane info_pane;
     private AnchorPane gpt_pane;
     private SearchController searchController;
     private WordListController wordListController;
@@ -79,6 +80,11 @@ public class MainMenuController implements Initializable {
         this.setToDo(gpt_pane);
     }
 
+    /** show info view. */
+    public void infoView() {
+        this.setToDo(info_pane);
+    }
+
     /**
      * On clicking switch scene
      *
@@ -99,11 +105,21 @@ public class MainMenuController implements Initializable {
             this.wordlistView();
         } else if (ev.getSource() == btn_chat) {
             this.gptView();
+        } else if (ev.getSource() == btn_info) {
+            this.infoView();
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/instruction.fxml"));
+            info_pane = fxmlLoader.load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/search_view.fxml"));
@@ -161,7 +177,7 @@ public class MainMenuController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.searchView();
+        this.infoView();
     }
     
 }

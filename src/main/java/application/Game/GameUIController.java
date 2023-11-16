@@ -34,6 +34,9 @@ public class GameUIController extends GameController {
     @FXML
     private Label timerLabel;
 
+    protected Button clickedButton;
+
+
     protected void populateButtonsToUpdate() {
         buttonsToUpdate = gridPane.getChildren().stream()
                 .filter(node -> node instanceof Button)
@@ -91,8 +94,6 @@ public class GameUIController extends GameController {
             gridPane.add(button, i % numColumns, i / numColumns);
         }
     }
-
-    protected Button clickedButton;
 
     @FXML
     protected void handleButtonClick(ActionEvent event) {

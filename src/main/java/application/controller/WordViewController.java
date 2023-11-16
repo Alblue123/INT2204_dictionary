@@ -32,8 +32,8 @@ public class WordViewController extends MasterView {
     @FXML
     private ImageView my_fav;
 
-    Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_icon.png")));
-    Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_filled_icon.png")));
+    private Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_icon.png")));
+    private Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_filled_icon.png")));
     public void init(String target, String explain) {
         view_word_word.setText(target);
         word_view_web_view.getEngine().loadContent(explain, "text/html");

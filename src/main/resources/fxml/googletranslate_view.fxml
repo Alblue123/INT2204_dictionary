@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="658.0" stylesheets="@../css/translator.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GoogleTranslateController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="658.0" stylesheets="@../css/translator.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GoogleTranslateController">
    <children>
       <TextArea fx:id="sourceText" layoutX="45.0" layoutY="34.0" prefHeight="147.0" prefWidth="568.0" promptText="Please enter your sentence" styleClass="txt_area" stylesheets="@../css/translator.css">
          <font>
