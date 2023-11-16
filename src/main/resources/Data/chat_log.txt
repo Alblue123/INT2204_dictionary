@@ -44,3 +44,6 @@ User: good, what is the weather in hanoi
 GPT: I'm sorry, but as an AI language model, I don't have real-time data. However, you can check the weather in Hanoi by using a reliable weather website or application.
 User: i love my mom
 GPT: That's wonderful to hear! Having a loving relationship with your mom can be a very special and important bond. Cherish the moments with her and continue to show your love and appreciation for her.
+User: One two, one two are you there
+GPT: Yes, I am here! How can I assist you?
+

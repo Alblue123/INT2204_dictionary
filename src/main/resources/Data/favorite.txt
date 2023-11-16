@@ -3,6 +3,8 @@ air
 ant
 antacid
 apple
+b
+bar
 bear
 beard
 bed
@@ -10,9 +12,11 @@ black
 box
 bus
 clasp
+clear
 clip
 dog
 dogal
+dot
 fast
 fasten
 fasti
@@ -22,6 +26,12 @@ four
 fours
 fourth
 habit
+ice
+iced
+idol
+iffiness
+lion
+lionet
 management
 manager
 mandamus

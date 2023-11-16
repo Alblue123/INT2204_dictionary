@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="560.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
+<AnchorPane prefHeight="560.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
    <children>
       <AnchorPane minHeight="60.0" minWidth="600.0" prefHeight="60.0" prefWidth="780.0" style="-fx-background-color: #084484;">
          <children>
@@ -57,6 +57,15 @@
                   <ImageView fx:id="my_gpt" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/chat_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="bnt_power" layoutY="395.0" mnemonicParsing="false" onAction="#exit" prefHeight="62.0" prefWidth="62.0" styleClass="btn" stylesheets="@../css/mainMenu.css">
+               <graphic>
+                  <ImageView fx:id="my_power" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/power_icon.png" />
                      </image>
                   </ImageView>
                </graphic>

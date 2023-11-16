@@ -161,6 +161,7 @@ class MainMenuController {
     -btn_game: Button
     -btn_wl: Button
     -btn_chat: Button
+    -btn_power: Button
     -todo_pane: AnchorPane
 
     -setToDo(anchorPane: AnchorPane)
@@ -172,7 +173,9 @@ class MainMenuController {
     +gameView()
     +gptView()
     +infoView()
+    +exit(event: ActionEvent)
     +onClick(ev: ActionEvent)
+    +initialize()
     +initialize(location: URL, resources: ResourceBundle)
 }
 
@@ -216,8 +219,8 @@ MasterView <-- SynonymController
 class WordViewController {
     -word_view_web_view: WebView
     -my_fav: ImageView
-    -image1: Image
-    -image2: Image
+    image1: Image
+    image2: Image
 
     +init(target: String, explain: String)
     +clickDelete(e: MouseEvent)

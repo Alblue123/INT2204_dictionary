@@ -32,8 +32,8 @@ public class WordViewController extends MasterView {
     @FXML
     private ImageView my_fav;
 
-    private Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_icon.png")));
-    private Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_filled_icon.png")));
+    Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_icon.png")));
+    Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/fav_filled_icon.png")));
     public void init(String target, String explain) {
         view_word_word.setText(target);
         word_view_web_view.getEngine().loadContent(explain, "text/html");
@@ -76,10 +76,15 @@ public class WordViewController extends MasterView {
                 Task<Void> speakTask = new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
-                        VoiceRSS.speakWords(word, "Nancy", "en-gb");
+                        try {
+                            VoiceRSS.speakWords(word, "Nancy", "en-gb");
+                        } catch (IOException e) {
+                            System.out.println("Connection lost: " + e.getMessage());
+                        }
                         return null;
                     }
                 };
+
 
                 // Start the task in a new thread
                 new Thread(speakTask).start();
